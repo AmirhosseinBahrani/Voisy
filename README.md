@@ -1,6 +1,6 @@
 # Voisy
 
-# LICENSE
+# License
 MIT License
 
 Copyright (c) 2021 AmirhosseinBahrani

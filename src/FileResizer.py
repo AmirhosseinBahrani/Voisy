@@ -1,19 +1,19 @@
 from pydub import AudioSegment
+import ffmpeg
+
 
 class FileResizer:
-    def __init__(self, files_path, file_name, startMin, startSec, endMin, endSec):
-        self.files_path = files_path
+    def __init__(self, file_name, start_time, end_time):
         self.file_name = file_name
-        self.startMin = startMin
-        self.startSec = startSec
-        self.endMin = endMin
-        self.endSec = endSec
+        self.start_time = start_time
+        self.end_time = end_time
+        
+    def get_lenth():
+        return ffmpeg.probe(str(self.file_name))['format']['duration']
 
     def extract():
-        startTime = startMin*60*1000+startSec*1000
-        endTime = endMin*60*1000+endSec*1000
-        # Opening file and extracting segment
-        song = AudioSegment.from_mp3( files_path+file_name+'.mp3' )
-        extract = song[startTime:endTime]
-        # Saving
-        extract.export( file_name+'.mp3', format="mp3")
+        t1 = self.start_time * 1000 #Works in milliseconds
+        t2 = self.get_lenth()
+        newAudio = AudioSegment.from_wav(str(self.file_name))
+        newAudio = newAudio[t1:t2]
+        newAudio.export(str(self.file_name), format="wav")

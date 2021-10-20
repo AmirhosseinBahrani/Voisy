@@ -1,6 +1,35 @@
 # Voisy
 
+# How to install dependencies
+
+Mac/Linux:
+
+We have two ways to download ffmpeg in Mac:
+1- With homebrew:
+```ruby
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+brew install ffmpeg
+```
+
+2- install from FFmpeg site
+Install ffmpeg from this link
+```ruby
+cd ~/Downloads
+
+ls /usr/local/bin
+
+sudo mkdir -p /usr/local/bin
+
+sudo cp ff* /usr/local/bin
+
+sudo xattr -dr com.apple.quarantine /usr/local/bin/ff*
+```
+
+
+
 # License
+
 MIT License
 
 Copyright (c) 2021 AmirhosseinBahrani

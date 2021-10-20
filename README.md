@@ -5,6 +5,7 @@
 Mac/Linux:
 
 We have two ways to download ffmpeg in Mac:
+
 1- With homebrew:
 ```ruby
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"

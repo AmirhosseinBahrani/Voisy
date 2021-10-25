@@ -1,35 +1,76 @@
-import speech_recognition as sr
-import time
-from FileResizer import FileResizer
-import math
-from pydub import AudioSegment
-import speech_recognition as sr
-import time
+from logging import fatal
+import vosk
+import sys
+import os
+import wave
+import subprocess
+import srt
+import json
+import datetime
 
-r = sr.Recognizer()
+class VoiceRecognizer(object):
 
-def recognize(audio_text):
-   return r.recognize_google(audio_text)
-      
-r = sr.Recognizer()
-file_audio = sr.AudioFile('/src/saq.wav')
-time_to_start = 0
-first_start = time.time()
+    def __init__(self ,filename , WORDS_IN_LINE, sample_rate=16000) -> None:
+        super().__init__()
+        self.filename = filename
+        self.WORDS_IN_LINE = WORDS_IN_LINE
+        self.sample_rate=sample_rate
 
-while True:
-   start = time.time()
-   try:
-      #r.adjust_for_ambient_noise(source)
-      with file_audio as source:
-         audio_text = r.listen(source,0.7)
-         recognize(audio_text)
-         #print(r.recognize_google(audio_text, language="en-US", show_all=False))
-   except sr.WaitTimeoutError:
-      end = time.time()
-      time_to_start = abs(start - end) * 100
-      print(abs(time_to_start * 100))
-      t1 = time_to_start * 1000 #Works in milliseconds
-      FR = FileResizer("saq.wav",t1).extract()
-      FR.extract()
-      # Update Audio file
-      file_audio = sr.AudioFile('saq.wav')
+    def CheckInputs(self):
+        if not os.path.exists("model"):
+            return "can't find model"
+        elif os.path.exists(self.filename):
+            return "Can't locate file directory"
+        elif self.WORDS_IN_LINE < 5:
+            return "number of words in line can't be lower than 6"
+        
+
+    def Transcribe(self) -> list:
+        self.CheckInputs()
+        model = vosk.Model("model")
+        rec = vosk.KaldiRecognizer(model, self.sample_rate)
+        rec.SetWords(True)
+        process = subprocess.Popen(['ffmpeg', '-loglevel', 'quiet', '-i', self.filename, '-ar', str(self.sample_rate) , '-ac', '1', '-f', 's16le', '-'], stdout=subprocess.PIPE)
+        results = []
+        subtitles = []
+        done = False
+        while not done:
+            data = process.stdout.read(4000)
+            if len(data) == 0:
+                done = True
+                break
+            if rec.AcceptWaveform(data):
+                results.append(rec.Result())
+        results.append(rec.FinalResult())
+        
+        for i, res in enumerate(results):
+            json_data = json.loads(res)
+            if not 'result' in json_data:
+                continue
+            else:
+                words = json_data['result']
+                for j in range(0, len(words), self.WORDS_IN_LINE):
+                    line = words[j : j + self.WORDS_IN_LINE] 
+                    subtitles.append(srt.Subtitle(index=len(subtitles), 
+                            content=" ".join([l['word'] for l in line]),
+                            start=datetime.timedelta(seconds=line[0]['start']), 
+                            end=datetime.timedelta(seconds=line[len(line) - 1]['end'])))
+        return subtitles
+
+    def CreateSubtitle(self):
+        srt_filename = self.filename[0:-4]
+        f = open(srt_filename + ".srt", "x")
+        f.write(srt.compose(rec.Transcribe()))
+        f.close()
+
+    def GenerateSubtitle(self):
+        subtitle = self.Transcribe()
+        self.CreateSubtitle()
+
+
+
+
+if __name__ == "__main__":
+    filename = "sa" #without file format
+    rec = VoiceRecognizer(filename + ".mp3",7)
+    rec.GenerateSubtitle()

@@ -2,6 +2,10 @@
 
 # How to install dependencies
 
+install model:
+you can download model from this link:
+https://alphacephei.com/vosk/models/vosk-model-en-us-0.21-compile.zip
+
 Mac/Linux:
 
 We have two ways to download ffmpeg in Mac:

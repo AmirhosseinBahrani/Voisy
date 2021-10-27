@@ -76,7 +76,7 @@ class VoiceRecognizer(object):
 
 
 
-if __name__ == "__main__":
+if __name__ == "__main__": 
     filename = "sa" #without file format
     rec = VoiceRecognizer(filename + ".mp3",7)
     rec.GenerateSubtitle()

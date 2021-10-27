@@ -66,7 +66,14 @@ class VoiceRecognizer(object):
     def GenerateSubtitle(self):
         subtitle = self.Transcribe()
         self.CreateSubtitle()
-
+        
+    def PutSubtitleInVideo(self):
+        srt_filename = self.filename[0:-4]
+        generator = lambda txt: TextClip(txt, font='Arial', fontsize=16, color='white')
+        subtitles = SubtitlesClip(srt_filename + ".srt", generator)
+        video = VideoFileClip(srt_filename + ".mp4")
+        result = CompositeVideoClip([video, subtitles.set_pos(('center','bottom'))])
+        result.write_videofile(srt_filename + "(Subtitle)" + ".mp4", fps=video.fps, temp_audiofile="temp-audio.m4a", remove_temp=True, codec="libx264", audio_codec="aac")
 
 
 

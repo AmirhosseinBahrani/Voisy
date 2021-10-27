@@ -1,4 +1,3 @@
-from logging import fatal
 import vosk
 import sys
 import os

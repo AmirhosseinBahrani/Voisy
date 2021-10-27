@@ -1,11 +1,10 @@
 import sounddevice as sd 
 from scipy.io.wavfile import write 
+import os
 
 def record(name , duration):
     freq = 48000
-    duration = 10
+    address = ".\\audio\\wav\\" + name + ".wav"
     recording = sd.rec(int(duration * freq), samplerate=freq ,channels=2) 
     sd.wait() 
-    write(".\\audio\\wav\\MyRecording.wav", freq, recording) 
-    print(recording)
-record("ali" , 5)
+    write(address , freq , recording)

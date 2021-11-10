@@ -7,3 +7,4 @@ class Convertor:
         src = (".\\audio\\mp3\\" + name + ".mp3")
         audio = AudioSegment.from_file(address)
         audio.export(src , format="wav")
+ 

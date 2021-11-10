@@ -1,7 +1,9 @@
 from pydub import AudioSegment
-def convertToWav(name):
-    address = ".\\audio\\wav\\" + name + ".wav"
-    src = (".\\audio\\mp3\\" + name + ".mp3")
-    audio = AudioSegment.from_mp3(src)
-    audio.export(address , format="wav")
- 
+
+class Convertor:
+    def convertToMp3(self , name , formatOfFile="wav" , address=None):
+        if address == None :
+            address = ".\\audio\\others\\" + name + "." + formatOfFile
+        src = (".\\audio\\mp3\\" + name + ".mp3")
+        audio = AudioSegment.from_file(address)
+        audio.export(src , format="wav")

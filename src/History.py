@@ -15,7 +15,7 @@ class History :
                 date = time.ctime(os.path.getmtime(path))
                 properties.append(date)
                 files.append(properties)
-            else:
+            else: 
                 continue
 
         return files

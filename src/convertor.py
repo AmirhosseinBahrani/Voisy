@@ -1,6 +1,6 @@
 from pydub import AudioSegment
 
-class Convertor:
+class Convertor: 
     def convertToMp3(self , name , formatOfFile="wav" , address=None):
         if address == None :
             address = ".\\audio\\others\\" + name + "." + formatOfFile

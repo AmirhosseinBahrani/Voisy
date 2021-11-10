@@ -10,3 +10,4 @@ class Record:
         sd.wait() 
         open(address , "x")
         write(address , freq , recording)
+ 

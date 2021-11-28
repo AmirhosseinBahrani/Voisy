@@ -58,64 +58,20 @@ class VoiceRecognizer(object):
                             end=datetime.timedelta(seconds=line[len(line) - 1]['end'])))
         return subtitles
 
-    def CreateSubtitle(self):
+    def CreateSubtitle(self, transcribtedText):
         srt_filename = self.filename[0:-4]
         f = open(srt_filename + ".srt", "x")
-        f.write(srt.compose(rec.Transcribe()))
+        f.write(srt.compose(transcribtedText))
         f.close()
 
     def GenerateSubtitle(self):
         subtitle = self.Transcribe()
-        self.CreateSubtitle()
-
-    def PutSubtitleInVideo(self):
-        srt_filename = self.filename[0:-4]
-        print(srt_filename)
-        import re
-
-        with open(srt_filename + '.srt', 'r') as h:
-            sub = h.readlines()
-        re_pattern = r'[0-9]{2}:[0-9]{2}:[0-9]{2},[0-9]{3} -->'
-        regex = re.compile(re_pattern)
-        # Get start times
-        start_times = list(filter(regex.search, sub))
-        start_times = [time.split(' ')[0] for time in start_times]
-        # Get lines
-        lines = [[]]
-        for sentence in sub:
-            if re.match(re_pattern, sentence):
-                lines[-1].pop()
-                lines.append([])
-            else:
-                lines[-1].append(sentence)
-        lines = lines[1:]         
-        subs = {}
-        for i,j in zip(start_times,lines):
-            subs[i] = j
-
-
-        import cv2
-        import pandas as pd
-        from moviepy.editor import VideoFileClip
-
-        def pipeline(frame):
-            try:
-                cv2.putText(frame, str(next(dfi)[1].sentence), (0, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 3, cv2.LINE_AA, True)
-            except StopIteration:
-                pass
-            # additional frame manipulation
-            return frame
-        print(subs)
-        dfi = subs.items()
-        video = VideoFileClip(srt_filename + ".mp4")
-        out_video = video.fl_image(pipeline)
-        out_video.write_videofile("vidout.mp4", audio=True)
+        self.CreateSubtitle(self, transcribtedText)
 
 
 
 
 if __name__ == "__main__":
-    filename = "audio/mp3/qe" #without file format
+    filename = "../audio/mp3/qe" #without file format
     rec = VoiceRecognizer(filename + ".mp3",7)
-    #rec.GenerateSubtitle()
-    rec.PutSubtitleInVideo()
+    rec.GenerateSubtitle()

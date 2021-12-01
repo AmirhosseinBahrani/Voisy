@@ -72,8 +72,8 @@ body{
     text-decoration: none;
     padding-top: 2px;
     margin-left: 5px;
-    color: #344767;
     float: left;
+    color: #344767;
 }
 .nav-links:active{
     color: #344767;

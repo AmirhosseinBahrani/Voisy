@@ -1,0 +1,8 @@
+1
+00:00:00,780 --> 00:00:03,480
+hi this is a voice from me
+
+2
+00:00:05,100 --> 00:00:06,900
+how are you my friend
+

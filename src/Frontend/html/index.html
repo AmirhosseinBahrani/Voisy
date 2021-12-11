@@ -31,11 +31,31 @@
         </header>
 
         <section class="section" id="import-file">
-            <input type="file">
+            <input id="real-choose-file" type="file" hidden="hidden">
+            <button id="choose-file" type="button">choose file</button>
+            <span id="choosen-file-directory">Nothing yet</span>
+            
         </section>
         <script type="text/javascript">
             const soundTabAnimation = document.getElementById("for-sound-tab");
             const soundTab = document.getElementById("tab-sound");
+            const fakeUploadButton = document.getElementById("choose-file")
+            const realUploadButton = document.getElementById("real-choose-file")
+            const directoryText = document.getElementById("choosen-file-directory")
+            fakeUploadButton.addEventListener("click" , function(){
+                realUploadButton.click()
+            });
+            realUploadButton.addEventListener("change" , function(){
+                if (realUploadButton.value){
+                    var text = realUploadButton.value;
+                    if (text.length > 50) { 
+                        text = text.substring(0, 49) + "...";
+                    };
+                    directoryText.innerHTML = text
+                }else{
+                    directoryText.innerHTML = "Nothing yet"
+                }
+            });
             soundTab.addEventListener("mouseover" , function(){
                 soundTabAnimation.style.width = "16vw";
                 soundTabAnimation.style.marginLeft = "0vw"

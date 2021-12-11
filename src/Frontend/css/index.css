@@ -75,9 +75,6 @@ body{
     color: #344767;
     float: left;
 }
-.nav-links:active{
-    color: #344767;
-}
 .icon{
     float: left;
     padding-top: 5px;
@@ -88,4 +85,28 @@ body{
 }
 #export-tab{
     margin-left: 13px;
+}
+.section{
+    background-color: white;
+    box-shadow: 2.5px 5px 5px -5px rgba(0,0,0,0.05);
+    border-radius: 10px;
+}
+.animation{
+    position: absolute;
+    opacity: 0%;
+    background-color:#db434d;
+    height: 100%;
+    width: 10vw;
+    margin-left: 3vw;
+    border-radius:10px ;
+    transition-duration: 0.5s;
+
+}
+#import-file{
+    position: relative;
+    top: 10px;
+    width: 80vw;
+    height: 100px;
+    margin-left: 19vw;
+
 }

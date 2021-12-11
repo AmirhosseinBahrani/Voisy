@@ -6,6 +6,7 @@
       <!-- "../bower_components/bootstrap/dist/css/bootstrap.min.css" -->
       <meta name="viewport" content="width=device-width , initial-scale=1.0">
       <link rel = "stylesheet" href = "../css/index.css" />
+      
    </head>   
     
     
@@ -15,10 +16,36 @@
             <div id="line"></div> 
             <nav>
                 <li class="for-taskbar" id="selected"><div class="upload-container"><object class="icon" data="../svg/color/upload.svg" width="20" height="20"></object><a class="nav-links">Import</a></div></li>
-                <li class="for-taskbar"><div class="upload-container"><object class="icon" data="../svg/color/music-note-beamed.svg" width="20" height="20"></object><a href="./sound.html" class="nav-links">Sound</a></div></li>
-                <li class="for-taskbar"><div class="upload-container"><object id="subtitle-tab" class="icon" data="../svg/color/subtitles-svgrepo-com.svg" width="20" height="20"></object><a href="subtitle.html" class="nav-links">Subtitle</a></div></li>
-                <li class="for-taskbar"><div class="upload-container"><object id="export-tab" class="icon" data="../svg/color/download.svg" width="20" height="20"></object><a href="./export.html" class="nav-links">Export</a></div></li>
+                <li class="for-taskbar not-selected">
+                    <div id="for-sound-tab" class="animation"></div>
+                    <div id="tab-sound" class="upload-container">
+                    
+                    <object class="icon" data="../svg/color/music-note-beamed.svg" width="20" height="20">
+                    
+                    </object>
+                    <a href="./sound.html" class="nav-links">Sound</a>
+                </div></li>
+                <li class="for-taskbar not-selected"><div class="upload-container "><object id="subtitle-tab" class="icon" data="../svg/color/subtitles-svgrepo-com.svg" width="20" height="20"></object><a href="subtitle.html" class="nav-links">Subtitle</a></div></li>
+                <li class="for-taskbar not-selected"><div class="upload-container"><object id="export-tab" class="icon" data="../svg/color/download.svg" width="20" height="20"></object><a href="./export.html" class="nav-links">Export</a></div></li>
             </nav>
         </header>
+
+        <section class="section" id="import-file">
+            <input type="file">
+        </section>
+        <script type="text/javascript">
+            const soundTabAnimation = document.getElementById("for-sound-tab");
+            const soundTab = document.getElementById("tab-sound");
+            soundTab.addEventListener("mouseover" , function(){
+                soundTabAnimation.style.width = "16vw";
+                soundTabAnimation.style.marginLeft = "0vw"
+                soundTabAnimation.style.opacity = "100%"
+            });
+            soundTab.addEventListener("mouseleave" , function(){
+                soundTabAnimation.style.width = "10vw";
+                soundTabAnimation.style.marginLeft = "3vw"
+                soundTabAnimation.style.opacity = "0%"
+            });
+        </script>
     </body>
-</html>
+</html> 

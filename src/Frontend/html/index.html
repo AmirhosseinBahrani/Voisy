@@ -34,6 +34,13 @@
             <input id="real-choose-file" type="file" hidden="hidden">
             <button id="choose-file" type="button">choose file</button>
             <span id="choosen-file-directory">Nothing yet</span>
+            <div id="sound-bar-container">
+
+                <div id="progress"></div>
+                <input id="sound-bar" type="range" value="0">
+
+                
+            </div>
             
         </section>
         <script type="text/javascript">
@@ -42,6 +49,13 @@
             const fakeUploadButton = document.getElementById("choose-file")
             const realUploadButton = document.getElementById("real-choose-file")
             const directoryText = document.getElementById("choosen-file-directory")
+            const songBar = document.getElementById("sound-bar")
+            const progress = document.getElementById("progress")
+            songBar.addEventListener("input" , function(){
+                if(songBar.value){
+                    progress.style.width = (songBar.value * 2) + "px"
+                };
+            });
             fakeUploadButton.addEventListener("click" , function(){
                 realUploadButton.click()
             });

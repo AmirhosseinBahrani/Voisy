@@ -148,3 +148,50 @@ body{
     
     
 }
+
+#sound-bar-container{
+    position: relative;
+    float: left;
+
+}
+#sound-bar{
+    z-index: 0;
+    float: left;
+    position: absolute;
+    appearance: none;
+    background-color: #aaa;
+    border-radius: 90px;
+    width: 200px;
+    height: 5px;
+    margin-top: 50px;
+}
+#sound-bar::-webkit-slider-thumb{
+    
+    -webkit-appearance: none;
+    height: 10px;
+    width: 10px;
+    background: #a147dc;
+    border-radius: 90px;   
+
+
+}
+#progress{
+    z-index: 3;
+    position: absolute;
+    background-color:#a147dc ;
+    height: 5px;
+    width: 0px;
+    margin-top: 50px;
+    border-radius: 50px;
+   
+}
+#pointer{
+    z-index: 5;
+    position: absolute;
+    background-color: #a147dc;
+    width: 8px;
+    height: 8px;
+    margin-left: 0px;
+    border-radius: 20px;
+    margin-top: 48px;
+}

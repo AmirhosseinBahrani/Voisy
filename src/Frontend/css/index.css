@@ -145,6 +145,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: left;
+    word-break: break-all;
     
     
 }
@@ -152,6 +153,7 @@ body{
 #sound-bar-container{
     position: relative;
     float: left;
+    margin-left: 30px;
 
 }
 #sound-bar{

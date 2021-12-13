@@ -165,6 +165,7 @@ body{
     width: 200px;
     height: 5px;
     margin-top: 50px;
+    margin-left: 10px;
 }
 #sound-bar::-webkit-slider-thumb{
     
@@ -184,6 +185,7 @@ body{
     width: 0px;
     margin-top: 50px;
     border-radius: 50px;
+    margin-left: 10px;
    
 }
 #pointer{
@@ -217,7 +219,8 @@ body{
     cursor: pointer;
     border: none;
     margin-top: 40px;
-    margin-left: 5px;
+    margin-left: 10px;
+
 }
   
 .play-btn span{

@@ -137,7 +137,6 @@ body{
 
 #choosen-file-directory{ 
     float: left;    
-    width: 5vw;
     height: 100px;
     margin-left: 1vw;
     color: #aaa ;       
@@ -218,6 +217,7 @@ body{
     cursor: pointer;
     border: none;
     margin-top: 40px;
+    margin-left: 5px;
 }
   
 .play-btn span{

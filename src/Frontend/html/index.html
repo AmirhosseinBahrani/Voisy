@@ -34,13 +34,20 @@
             <input id="real-choose-file" type="file" hidden="hidden">
             <button id="choose-file" type="button">choose file</button>
             <span id="choosen-file-directory">Nothing yet</span>
+            <button id="pause-play-button" class="play-btn pause">
+                <span id="left-side"></span>
+                <span id="right-side"></span>
+            </button>
             <div id="sound-bar-container">
-
+                
                 <div id="progress"></div>
                 <input id="sound-bar" type="range" value="0">
 
                 
             </div>
+
+            
+          
             
         </section>
         <script type="text/javascript">
@@ -51,6 +58,21 @@
             const directoryText = document.getElementById("choosen-file-directory")
             const songBar = document.getElementById("sound-bar")
             const progress = document.getElementById("progress")
+            const leftSide = document.getElementById("left-side")
+            const rightSide = document.getElementById("right-side")
+            const pauseButton = document.getElementById("pause-play-button")
+            pauseButton.addEventListener("click" , function(){
+                if(rightSide.clientHeight > 0){
+                    rightSide.style.height = "0px"
+                    leftSide.style.clipPath = "polygon(0 0, 100% 50%, 100% 50%, 0% 100%)"
+                    leftSide.style.width = "12px"
+                }else{
+                    rightSide.style.height = "15px"
+                    leftSide.style.clipPath = " polygon(0 0, 100% 0, 100% 100%, 0% 100%)"
+                    leftSide.style.width = "5px"
+                    
+                }
+            });
             songBar.addEventListener("input" , function(){
                 if(songBar.value){
                     progress.style.width = (songBar.value * 2) + "px"
@@ -61,7 +83,7 @@
             });
             realUploadButton.addEventListener("change" , function(){
                 if (realUploadButton.value){
-                    var text = realUploadButton.value;
+                    var text = realUploadButton.files[0].name;
                     if (text.length > 50) { 
                         text = text.substring(0, 49) + "...";
                     };

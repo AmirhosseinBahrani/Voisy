@@ -197,3 +197,46 @@ body{
     border-radius: 20px;
     margin-top: 48px;
 }
+
+
+.controls{  
+    float: left;
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    top: 50px;
+    
+}
+  
+.play-btn{
+    position: relative;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+    border: none;
+    margin-top: 40px;
+}
+  
+.play-btn span{
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 15px;
+    border-radius: 2px;
+    background: #a147dc;
+    transition: 0.5s;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+  
+.play-btn span:nth-child(2){
+    left: 55%;
+    
+    
+}
+   
+  

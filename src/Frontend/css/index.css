@@ -186,6 +186,7 @@ body{
     margin-top: 50px;
     border-radius: 50px;
     margin-left: 10px;
+    pointer-events: none;
    
 }
 #pointer{

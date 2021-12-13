@@ -61,15 +61,21 @@
             const leftSide = document.getElementById("left-side")
             const rightSide = document.getElementById("right-side")
             const pauseButton = document.getElementById("pause-play-button")
+            var paused = true
+            rightSide.style.height = "0px"
+            leftSide.style.clipPath = "polygon(0 0, 100% 50%, 100% 50%, 0% 100%)"
+            leftSide.style.width = "12px"
             pauseButton.addEventListener("click" , function(){
-                if(rightSide.clientHeight > 0){
+                if(!paused){
                     rightSide.style.height = "0px"
                     leftSide.style.clipPath = "polygon(0 0, 100% 50%, 100% 50%, 0% 100%)"
                     leftSide.style.width = "12px"
+                    paused = true
                 }else{
                     rightSide.style.height = "15px"
                     leftSide.style.clipPath = " polygon(0 0, 100% 0, 100% 100%, 0% 100%)"
                     leftSide.style.width = "5px"
+                    paused = false
                     
                 }
             });

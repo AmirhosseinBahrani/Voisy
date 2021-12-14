@@ -9,6 +9,7 @@ import json
 import datetime
 from moviepy.editor import *
 from moviepy.video.tools.subtitles import SubtitlesClip
+import shutil
 app = Flask(__name__)
 
 class VoiceRecognizer(object):
@@ -70,16 +71,28 @@ class VoiceRecognizer(object):
     def GenerateSubtitle(self):
         transcribtedText = self.Transcribe()
         self.CreateSubtitle(transcribtedText)
+        print("Done")
 
 
-@app.route('/VoiceRecognizer/<filename>')
+@app.route('/vr/<filename>')
 def my_link(filename):
     print(filename)
-    new_filename = filename[1:len(filename)]
+    # get real file name
+    newfilename = ""
+    for i in filename:
+        if i == "-":
+            newfilename += "/"
+        else :
+            newfilename += i
+    
+    # copy file to new path for recognizing
+    new_path = shutil.copy2(newfilename, "./audio/mp3")
+
+    new_filename = "." + new_path[1:len(new_path)]
     print(new_filename)
-    rec = VoiceRecognizer(filename + ".mp3", 7)
+    rec = VoiceRecognizer(new_filename , 7)
     rec.GenerateSubtitle()
-    return "True"
+    return new_path
 
 
 if __name__ == '__main__':

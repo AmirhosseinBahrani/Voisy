@@ -16,20 +16,14 @@
             <div id="line"></div> 
             <nav>
                 <li class="for-taskbar" id="selected"><div class="upload-container"><object class="icon" data="../svg/color/upload.svg" width="20" height="20"></object><a class="nav-links">Import</a></div></li>
-                <li class="for-taskbar not-selected">
-                    <div id="for-sound-tab" class="animation"></div>
-                    <div id="tab-sound" class="upload-container">
-                    
-                    <object class="icon" data="../svg/color/music-note-beamed.svg" width="20" height="20">
-                    
-                    </object>
-                    <a href="./sound.html" class="nav-links">Sound</a>
-                </div></li>
-                <li class="for-taskbar not-selected"><div class="upload-container "><object id="subtitle-tab" class="icon" data="../svg/color/subtitles-svgrepo-com.svg" width="20" height="20"></object><a href="subtitle.html" class="nav-links">Subtitle</a></div></li>
-                <li class="for-taskbar not-selected"><div class="upload-container"><object id="export-tab" class="icon" data="../svg/color/download.svg" width="20" height="20"></object><a href="./export.html" class="nav-links">Export</a></div></li>
+
+                <li class="for-taskbar"><div class="upload-container"><object class="icon" data="../svg/color/music-note-beamed.svg" width="20" height="20"></object><a href="./sound.html" class="nav-links">Sound</a></div></li>
+                <li class="for-taskbar"><div class="upload-container"><object id="subtitle-tab" class="icon" data="../svg/color/subtitles-svgrepo-com.svg" width="20" height="20"></object><a href="subtitle.html" class="nav-links">Subtitle</a></div></li>
+                <li class="for-taskbar"><div class="upload-container"><object id="export-tab" class="icon" data="../svg/color/download.svg" width="20" height="20"></object><a href="./audiosetting.html" class="nav-links">Audio</a></div></li>
+                <li class="for-taskbar"><div class="upload-container"><object id="export-tab" class="icon" data="../svg/color/download.svg" width="20" height="20"></object><a href="./export.html" class="nav-links">Export</a></div></li>
             </nav>
         </header>
-
+        
         <section class="section" id="import-file">
             <input id="real-choose-file" type="file" hidden="hidden">
             <button id="choose-file" type="button">choose file</button>
@@ -43,13 +37,9 @@
                 <div id="progress"></div>
                 <input id="sound-bar" type="range" value="0">
 
-                
             </div>
-
-            
-          
-            
         </section>
+       
         <script type="text/javascript">
             const soundTabAnimation = document.getElementById("for-sound-tab");
             const soundTab = document.getElementById("tab-sound");
@@ -87,9 +77,19 @@
             fakeUploadButton.addEventListener("click" , function(){
                 realUploadButton.click()
             });
-            realUploadButton.addEventListener("change" , function(){
+            realUploadButton.addEventListener("change" , function(event){
                 if (realUploadButton.value){
                     var text = realUploadButton.files[0].name;
+                    var directory = event.target.files;
+                    
+                    if (typeof(Storage) !== "undefined") {
+                    // Code for localStorage/sessionStorage.
+                        localStorage.setItem("FileDirectory", directory[0].path)
+                    } else {
+                    // No Web Storage support..
+                        assert("No web Storage")
+                    }
+
                     if (text.length > 25) { 
                         text = text.substring(0, 24) + "...";
                     };

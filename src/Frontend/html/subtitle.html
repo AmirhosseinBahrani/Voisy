@@ -6,6 +6,7 @@
       <!-- "../bower_components/bootstrap/dist/css/bootstrap.min.css" -->
       <meta name="viewport" content="width=device-width , initial-scale=1.0">
       <link rel = "stylesheet" href = "../css/subtitle.css" />
+      
    </head>
    
     
@@ -17,8 +18,59 @@
                 <li class="for-taskbar"><div class="upload-container"><object class="icon" data="../svg/color/upload.svg" width="20" height="20"></object><a href="index.html" class="nav-links">Import</a></div></li>
                 <li class="for-taskbar"><div class="upload-container"><object class="icon" data="../svg/color/music-note-beamed.svg" width="20" height="20"></object><a href="sound.html" class="nav-links">Sound</a></div></li>
                 <li class="for-taskbar" id="selected"><div class="upload-container"><object id="subtitle-tab" class="icon" data="../svg/color/subtitles-svgrepo-com.svg" width="20" height="20"></object><a class="nav-links">Subtitle</a></div></li>
+                <li class="for-taskbar"><div class="upload-container"><object id="export-tab" class="icon" data="../svg/color/download.svg" width="20" height="20"></object><a href="./audiosetting.html" class="nav-links">Audio</a></div></li>
                 <li class="for-taskbar"><div class="upload-container"><object id="export-tab" class="icon" data="../svg/color/download.svg" width="20" height="20"></object><a href="export.html" class="nav-links">Export</a></div></li>
             </nav>
         </header>
+
+
+        <section class="section" id="import-file">
+            <button id="choose-file" type="button">Transcribe</button>
+            <div id="FileDirectory">Srt file directory</div>
+            <script>
+
+                const sendRequest = async () => {
+                    console.log("ss");
+                    FileDirectoryH3.innerHTML = "Sending"
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function() {
+                        console.log(this.readyState, this.status, "200");
+                        if (this.readyState == 4 && this.status == 200) {
+                        // Typical action to be performed when the document is ready:
+                            var response = xhttp.responseText;
+                            FileDirectoryH3.innerHTML = response
+                        }
+                    };
+                    const text = localStorage.getItem("FileDirectory");
+                    var newtext = "";
+
+                    for (let index = 0; index < text.length; index++) {
+                        const element = text[index];
+                        if (element == "/"){
+                            newtext += "-"
+                        }
+                        else {
+                            newtext += element
+                        }
+                        
+                        
+                    }
+                    console.log(newtext);
+                    xhttp.open("GET", "http://127.0.0.1:5000/vr/" + newtext , true);
+
+                    xhttp.send();
+                }
+                
+                const TranscribeButton = document.getElementById("choose-file");
+                const FileDirectoryH3 = document.getElementById("FileDirectory");
+
+                TranscribeButton.addEventListener("click", async (event) => {
+                    FileDirectoryH3.innerHTML = "Sending"
+                    const res = await sendRequest()
+                    console.log(res, "ress");
+                })
+
+            </script>
+        </section>
     </body>
 </html>

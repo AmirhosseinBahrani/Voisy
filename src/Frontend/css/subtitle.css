@@ -89,3 +89,74 @@ body{
 #export-tab{
     margin-left: 13px;
 }
+
+
+.section{
+    background-color: white;
+    box-shadow: 2.5px 5px 5px -5px rgba(0,0,0,0.05);
+    border-radius: 10px;
+}
+.animation{
+    position: absolute;
+    opacity: 0%;
+    background-color:#a147dc;
+    height: 100%;
+    width: 10vw;
+    margin-left: 3vw;
+    border-radius:10px ;
+
+    transition-duration: 0.5s;
+
+}
+#import-file{
+    position: relative;
+    top: 25vw;
+    left: 20vw;
+    width: 40vw;
+    height: 100px;
+    margin-left: 19vw;
+
+}
+#choose-file{
+    display: block;
+    font-family: 'Outfit', sans-serif;
+    border-radius: 10px;
+    color: whitesmoke   ;
+    float: left;
+    height: 70px;
+    width: 12vw;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 15px;
+    border: 0px ;
+    font-weight: 550;
+    font-size: 16px;
+    background-color: #8a2be2 ;
+    text-align:center;
+    box-shadow: 2.5px 5px 5px -5px rgba(0,0,0,1);
+    transition-duration: 0.5s;
+    cursor: pointer;
+}
+#choose-file:hover{
+    background-color:#a147dc ;
+}
+
+#choosen-file-directory{ 
+    float: left;    
+    width: 5vw;
+    height: 100px;
+    margin-left: 1vw;
+    color: #aaa ;       
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    
+    
+}
+
+#FileDirectory {
+    left: 5vw;
+    text-align: center;
+    vertical-align: middle;
+}

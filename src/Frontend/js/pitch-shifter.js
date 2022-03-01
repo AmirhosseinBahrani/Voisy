@@ -35,7 +35,7 @@ var pitchShifter = (function () {
     linearInterpolation = function (a, b, t) {
         return a + (b - a) * t;
     };
-    
+
 
     initAudio = function () {
 
@@ -63,8 +63,14 @@ var pitchShifter = (function () {
         sonogramAudioAnalyser.fftSize = sonogramFFTSize;
         sonogramAudioAnalyser.smoothingTimeConstant = sonogramSmoothing;
 
+
+        const dir = localStorage.getItem("FileDirectory");
+
+        if (dir == undefined) {
+          dir = '../assets/qe.mp3'
+        }
         var bufferLoader = new BufferLoader(
-            audioContext, ['../assets/qe.mp3'], function (bufferList) {
+            audioContext, [dir], function (bufferList) {
                 audioSources[0] = audioContext.createBufferSource();
                 audioSources[0].buffer = bufferList[0];
                 audioSources[0].loop = true;
@@ -131,7 +137,6 @@ var pitchShifter = (function () {
                 outputData[i] = this.buffer[i];
             }
         };
-
         pitchShifterProcessor.connect(spectrumAudioAnalyser);
         pitchShifterProcessor.connect(sonogramAudioAnalyser);
         pitchShifterProcessor.connect(audioContext.destination);
@@ -232,16 +237,16 @@ var pitchShifter = (function () {
         canvasContext = canvas.getContext('2d');
 
         barGradient = canvasContext.createLinearGradient(0, 0, 1, canvas.height - 1);
-        barGradient.addColorStop(0, '#550000');
-        barGradient.addColorStop(0.995, '#AA5555');
-        barGradient.addColorStop(1, '#555555');
+        barGradient.addColorStop(0, '#8a2be2');
+        barGradient.addColorStop(0.995, '#8a2be2');
+        barGradient.addColorStop(1, '#8a2be2');
 
         waveGradient = canvasContext.createLinearGradient(canvas.width - 2, 0, canvas.width - 1, canvas.height - 1);
-        waveGradient.addColorStop(0, '#FFFFFF');
-        waveGradient.addColorStop(0.75, '#550000');
-        waveGradient.addColorStop(0.75, '#555555');
-        waveGradient.addColorStop(0.76, '#AA5555');
-        waveGradient.addColorStop(1, '#FFFFFF');
+        waveGradient.addColorStop(0, '#8a2be2');
+        waveGradient.addColorStop(0.75, '#8a2be2');
+        waveGradient.addColorStop(0.75, '#8a2be2');
+        waveGradient.addColorStop(0.76, '#8a2be2');
+        waveGradient.addColorStop(1, '#8a2be2');
     };
 
     renderCanvas = function () {
@@ -307,6 +312,7 @@ var pitchShifter = (function () {
         window.requestAnimFrame(renderCanvas);
     };
 
+
     return {
 
         init: function () {
@@ -336,5 +342,6 @@ window.requestAnimFrame = (function () {
                 window.setTimeout(callback, 1000 / 60);
             });
 })();
+
 
 window.addEventListener("DOMContentLoaded", pitchShifter.init, true);

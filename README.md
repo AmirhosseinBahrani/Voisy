@@ -65,9 +65,6 @@ cd ~/Voisy/src
 electron main.js
 ```
 
-# Notes
-
-1- There is one executable file called LocalApi in Core folder that electron will run this file for turning LocalApi on
 
 # Futures
 
@@ -82,6 +79,11 @@ Russian
 Chinese
 
 Default models are low weight, if you want better result you need to download models from Export tab in the app. we recommend for transcribing, use first model on the export tabs from each part.
+
+
+# Notes
+
+1- There is one executable file called LocalApi in Core folder that electron will run this file for turning LocalApi on
 
 
 # License

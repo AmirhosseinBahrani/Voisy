@@ -27,6 +27,45 @@ sudo cp ff* /usr/local/bin
 sudo xattr -dr com.apple.quarantine /usr/local/bin/ff*
 ```
 
+3- install node modules:
+```bash
+cd ~/Voisy
+
+npm install
+```
+
+4- install python modules:
+```bash
+pip install vosk, flask, wave, srt, shutil, uuid, pydub, googletrans
+```
+
+# Run program:
+
+```bash
+cd ~/Voisy
+
+cd ~/src
+
+electron main.js
+```
+
+if above commands got error, you need to run LocalApi manually
+
+1- run LocalApi:
+```bash
+cd ~/Voisy/src/Core
+
+python3 LocalApi.py
+```
+
+2- run electron:
+```
+cd ~/Voisy/src
+
+electron main.js
+```
+
+
 
 
 # License

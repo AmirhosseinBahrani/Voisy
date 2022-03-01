@@ -87,6 +87,17 @@ cd ~/Voisy/src
 electron main.js
 ```
 
+you can create executable file from LocalApi, after creating electron will recognize it and it will be running automatically. you need to install pyinstaller for creating exe file:
+
+
+```
+pip install pyinstaller
+
+cd ~/Voisy/src/Core
+
+pyinstaller LocalApi.py -w
+```
+
 # Notes
 
 1- There is one executable file called LocalApi in ./Core/dist/LocalApi folder that electron will run this file for turning LocalApi on.

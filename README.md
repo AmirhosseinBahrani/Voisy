@@ -71,19 +71,9 @@ electron main.js
 
 # Futures
 
-you can Transcribe your audio files and video files easily with voisy, also you can Translate them to your favorite language and the transcribing procces is fully offline. you can download or create your own models for any language you want and use it on voicy, currently these languages will installed on voisy by defualt:
+you can Transcribe your audio files and video files easily with Voisy, also you can Translate them to your favorite language and the transcribing progress is fully offline. you can download or create your own models for any language you want and use it on Voisy, currently these languages are on the Voisy by defualt:
 
-English
-Persian
-Germany
-French
-Spanish
-Portugees
-Italy
-Russian
-Chinese
-Japanese
-Turkey
+English, Persian, Germany, French, Spanish , Portugees, Italy, Russian, Chinese, Japanese, Turkey
 
 Default models are low weight, if you want better result you need to download models from Export tab in the app. we recommend for transcribing, use first model on the export tabs from each part.
 

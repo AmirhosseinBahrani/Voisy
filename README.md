@@ -1,19 +1,19 @@
 # Voisy
- 
+
 # How to install dependencies
 
 Mac/Linux:
 
 We have two ways to download ffmpeg in Mac:
 
-1- With homebrew:
+1. With homebrew:
 ```ruby
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 brew install ffmpeg
 ```
 
-2- install from FFmpeg site
+install from FFmpeg site
 Install ffmpeg from this link
 ```ruby
 cd ~/Downloads
@@ -27,14 +27,14 @@ sudo cp ff* /usr/local/bin
 sudo xattr -dr com.apple.quarantine /usr/local/bin/ff*
 ```
 
-3- install node modules:
+2. install node modules:
 ```bash
 cd ~/Voisy
 
 npm install
 ```
 
-4- install python modules:
+3. install python modules:
 ```bash
 pip install vosk, flask, wave, srt, shutil, uuid, pydub, googletrans
 ```
@@ -49,22 +49,25 @@ cd ~/src
 electron main.js
 ```
 
-if above commands got error, you need to run LocalApi manually
+if above commands got error, you need to run LocalApi manually:
 
-1- run LocalApi:
+1. run LocalApi:
 ```bash
 cd ~/Voisy/src/Core
 
 python3 LocalApi.py
 ```
 
-2- run electron:
+2. run electron:
 ```
 cd ~/Voisy/src
 
 electron main.js
 ```
 
+# Notes
+
+1- There is one executable file called LocalApi in ./Core/dist/LocalApi folder that electron will run this file for turning LocalApi on.
 
 # Futures
 
@@ -74,23 +77,22 @@ English
 Persian
 Germany
 French
-Arabic
+Spanish
+Portugees
+Italy
 Russian
 Chinese
+Japanese
+Turkey
 
 Default models are low weight, if you want better result you need to download models from Export tab in the app. we recommend for transcribing, use first model on the export tabs from each part.
-
-
-# Notes
-
-1- There is one executable file called LocalApi in Core folder that electron will run this file for turning LocalApi on
 
 
 # License
 
 MIT License
 
-Copyright (c) 2021 AmirhosseinBahrani
+Copyright (c) 2021 Voisy
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

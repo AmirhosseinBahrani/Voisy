@@ -7,8 +7,8 @@
       <meta name="viewport" content="width=device-width , initial-scale=1.0">
       <link rel = "stylesheet" href = "../css/export.css" />
    </head>
-   
-    
+
+
     <body>
         <header class="header">
             <div class="container"><h1 id="taskbar-title">Voisy</h1></div>
@@ -20,5 +20,577 @@
                 <li class="for-taskbar" id="selected"><div class="upload-container"><object id="export-tab" class="icon" data="../svg/color/download.svg" width="20" height="20"></object><a class="nav-links">Export</a></div></li>
             </nav>
         </header>
+
+        <section class="section" id="format-transform">
+
+            <input id="real-choose-file" type="file" hidden="false">
+            <button id="choose-file-changer" type="button"></button>
+            <img id="transform-icon" src="../svg/color/transform.svg" width="60" height="60">
+
+            <select name="format-changer" id="format-changer">
+                <option value=".mp3">.mp3</option>
+                <option value=".wav">.wav</option>
+                <option value=".aiff">.aiff</option>
+                <option value=".flac">.flac</option>
+                <option value=".mp2">.mp2</option>
+                <option value=".ogg">.ogg</option>
+                <option value=".opus">.opus</option>
+                <option value=".au">.au</option>
+              </select>
+              <div id="TextForConverting">Please choose your output format <br> Please be carefull <br>your directory shouldn't  have spaces</div>
+              <button id="choose-file" type="button">Convert</button>
+        </section>
+
+        <section class="section" id="activity-table">
+            <h2 id="activity-label">Models</h2>
+
+            <table class="table" id="activityClass">
+
+              <thead>
+                <tr>
+                 <th><strong>English</strong></td>
+                 <th>Size</th>
+                 <th>Word error rate/Speed</th>
+                 <th>Notes</td>
+               </tr>
+
+              </thead>
+              <tbody>
+
+                 <tr class="row">
+                   <td><a href="https://alphacephei.com/vosk/models/vosk-model-small-en-us-0.15.zip" target="_blank">vosk-model-small-en-us-0.15</a></td>
+                   <td>40M</td>
+                   <td>9.85 (librispeech test-clean) 10.38 (tedlium)</td>
+                   <td>Lightweight wideband model for Android and RPi</td>
+                 </tr>
+                 <tr class="row">
+                   <td><a href="https://alphacephei.com/vosk/models/vosk-model-en-us-0.22.zip" target="_blank">vosk-model-en-us-0.22</a></td>
+                   <td>1.8G</td>
+                   <td>5.69 (librispeech test-clean) 6.05 (tedlium) 29.78(callcenter)</td>
+                   <td>Accurate generic US English model</td>
+                 </tr>
+                 <tr class="row">
+                   <td><a href="https://alphacephei.com/vosk/models/vosk-model-en-us-0.22-lgraph.zip" target="_blank">vosk-model-en-us-0.22-lgraph</a></td>
+                   <td>128M</td>
+                   <td>7.82 (librispeech) 8.20 (tedlium)</td>
+                   <td>Big US English model with dynamic graph</td>
+                 </tr>
+                 <tr class="row">
+                   <td><strong>English Other</strong></td>
+                   <td>&nbsp;</td>
+                   <td><strong>Older Models</strong></td>
+                   <td>&nbsp;</td>
+                 </tr>
+                 <tr class="row">
+                   <td><a href="https://alphacephei.com/vosk/models/vosk-model-en-us-daanzu-20200905.zip" target="_blank">vosk-model-en-us-daanzu-20200905</a></td>
+                   <td>1.0G</td>
+                   <td>7.08 (librispeech test-clean)  8.25 (tedlium)</td>
+                   <td>Wideband model for dictation from Kaldi-active-grammar project</td>
+                 </tr>
+                 <tr class="row">
+                   <td><a href="https://alphacephei.com/vosk/models/vosk-model-en-us-daanzu-20200905-lgraph.zip" target="_blank">vosk-model-en-us-daanzu-20200905-lgraph</a></td>
+                   <td>129M</td>
+                   <td>8.20 (librispeech test-clean) 9.28 (tedlium)</td>
+                   <td>Wideband model for dictation from Kaldi-active-grammar project with configurable graph</td>
+                 </tr>
+                 <tr class="row">
+                   <td><a href="https://alphacephei.com/vosk/models/vosk-model-en-us-librispeech-0.2.zip" target="_blank">vosk-model-en-us-librispeech-0.2</a></td>
+                   <td>845M</td>
+                   <td>TBD</td>
+                   <td>Repackaged Librispeech model from Kaldi, not very accurate</td>
+                 </tr>
+                 <tr class="row">
+                   <td><a href="https://alphacephei.com/vosk/models/vosk-model-small-en-us-zamia-0.5.zip" target="_blank">vosk-model-small-en-us-zamia-0.5</a></td>
+                   <td>49M</td>
+                   <td>11.55 (librispeech test-clean) 12.64 (tedlium)</td>
+                   <td>Repackaged Zamia model f_250, mainly for research</td>
+                 </tr>
+                 <tr class="row">
+                   <td><a href="https://alphacephei.com/vosk/models/vosk-model-en-us-aspire-0.2.zip" target="_blank">vosk-model-en-us-aspire-0.2</a></td>
+                   <td>1.4G</td>
+                   <td>13.64 (librispeech test-clean) 12.89 (tedlium) 33.82(callcenter)</td>
+                   <td>Kaldi original ASPIRE model, not very accurate</td>
+                 </tr>
+                 <tr class="row">
+                   <td><a href="https://alphacephei.com/vosk/models/vosk-model-en-us-0.21.zip" target="_blank">vosk-model-en-us-0.21</a></td>
+                   <td>1.6G</td>
+                   <td>5.43 (librispeech test-clean) 6.42 (tedlium) 40.63(callcenter)</td>
+                   <td>Wideband model previous generation</td>
+                 </tr>
+                 <tr class="row">
+                   <td><strong>Indian English</strong></td>
+                   <td>&nbsp;</td>
+                   <td>&nbsp;</td>
+                   <td>&nbsp;</td>
+                 </tr>
+                 <tr class="row">
+                   <td><a href="https://alphacephei.com/vosk/models/vosk-model-en-in-0.4.zip" target="_blank">vosk-model-en-in-0.4</a></td>
+                   <td>370M</td>
+                   <td>TBD</td>
+                   <td>Generic Indian English model for telecom and broadcast</td>
+                 </tr>
+                 <tr class="row">
+                   <td><a href="https://alphacephei.com/vosk/models/vosk-model-small-en-in-0.4.zip" target="_blank">vosk-model-small-en-in-0.4</a></td>
+                   <td>36M</td>
+                   <td>TBD</td>
+                   <td>Lightweight Indian English model for mobile applications</td>
+                 </tr>
+                 <tr class="row">
+                   <td><strong>Chinese</strong></td>
+                   <td>&nbsp;</td>
+                   <td>&nbsp;</td>
+                   <td>&nbsp;</td>
+                 </tr>
+                 <tr class="row">
+                   <td><a href="https://alphacephei.com/vosk/models/vosk-model-cn-0.1.zip" target="_blank">vosk-model-cn-0.1</a></td>
+                   <td>195M</td>
+                   <td>TBD</td>
+                   <td>Big narrowband Chinese model for server processing</td>
+                 </tr>
+                 <tr class="row">
+                   <td><a href="https://alphacephei.com/vosk/models/vosk-model-small-cn-0.3.zip" target="_blank">vosk-model-small-cn-0.3</a></td>
+                   <td>32M</td>
+                   <td>TBD</td>
+                   <td>Lightweight wideband model for Android and RPi</td>
+                 </tr>
+                 <tr class="row">
+                   <td><a href="https://alphacephei.com/vosk/models/vosk-model-cn-kaldi-multicn-2.zip" target="_blank">vosk-model-cn-kaldi-multicn-2</a></td>
+                   <td>195M</td>
+                   <td>TBD</td>
+                   <td>Original Wideband Kaldi multi-cn model from Kaldi</td>
+                 </tr>
+                 <tr class="row">
+                   <td><a href="https://alphacephei.com/vosk/models/vosk-model-cn-kaldi-multicn-2-lgraph.zip" target="_blank">vosk-model-cn-kaldi-multicn-2-lgraph</a></td>
+                   <td>101M</td>
+                   <td>TBD</td>
+                   <td>Original Wideband Kaldi multi-cn model from Kaldi with dynamic graph</td>
+                 </tr>
+                 <tr class="row">
+                   <td><a href="https://alphacephei.com/vosk/models/vosk-model-cn-kaldi-cvte-2.zip" target="_blank">vosk-model-cn-kaldi-cvte-2</a></td>
+                   <td>3.3G</td>
+                   <td>TBD</td>
+                   <td>CVTE Kaldi model from Kaldi</td>
+                 </tr>
+                 <tr class="row">
+                   <td><strong>Russian</strong></td>
+                   <td>&nbsp;</td>
+                   <td>&nbsp;</td>
+                   <td>&nbsp;</td>
+                 </tr>
+                 <tr class="row">
+                   <td><a href="https://alphacephei.com/vosk/models/vosk-model-ru-0.22.zip" target="_blank">vosk-model-ru-0.22</a></td>
+                   <td>1.5G</td>
+                   <td>5.74 (our audiobooks) 13.35 (open_stt audiobooks) 20.73 (open_stt youtube) 37.38 (openstt calls) 8.65 (golos crowd) 19.71 (sova devices)</td>
+                   <td>Big mixed band Russian model for server processing</td>
+                 </tr>
+                 <tr class="row">
+                   <td><a href="https://alphacephei.com/vosk/models/vosk-model-small-ru-0.22.zip" target="_blank">vosk-model-small-ru-0.22</a></td>
+                   <td>45M</td>
+                   <td>22.71 (openstt audiobooks) 31.97 (openstt youtube) 29.89 (sova devices) 11.79 (golos crowd)</td>
+                   <td>Lightweight wideband model for Android/iOS and RPi</td>
+                 </tr>
+                 <tr class="row">
+                   <td><strong>Old Russian</strong></td>
+                   <td>&nbsp;</td>
+                   <td>&nbsp;</td>
+                   <td>&nbsp;</td>
+                 </tr>
+                 <tr class="row">
+                   <td><a href="https://alphacephei.com/vosk/models/vosk-model-ru-0.10.zip" target="_blank">vosk-model-ru-0.10</a></td>
+                   <td>2.5G</td>
+                   <td>5.71 (our audiobooks) 16.26 (open_stt audiobooks) 26.20 (public_youtube_700_val open_stt) 40.15 (asr_calls_2_val open_stt)</td>
+                   <td>Big narrowband Russian model for server processing</td>
+                 </tr>
+                 <tr class="row">
+                   <td><strong>French</strong></td>
+                   <td>&nbsp;</td>
+                   <td>&nbsp;</td>
+                   <td>&nbsp;</td>
+                 </tr>
+                 <tr class="row">
+                   <td><a href="https://alphacephei.com/vosk/models/vosk-model-small-fr-0.22.zip" target="_blank">vosk-model-small-fr-0.22</a></td>
+                   <td>41M</td>
+                   <td>23.95 (cv test) 19.30 (mtedx) 27.25 (podcast)</td>
+                   <td>Lightweight wideband model for Android/iOS and RPi</td>
+                 </tr>
+                 <tr class="row">
+                   <td><a href="https://alphacephei.com/vosk/models/vosk-model-fr-0.22.zip" target="_blank">vosk-model-fr-0.22</a></td>
+                   <td>1.4G</td>
+                   <td>14.72 (cv test) 11.64 (mls) 13.10 (mtedx) 21.61 (podcast) 13.22 (voxpopuli)</td>
+                   <td>Big accurate model for servers</td>
+                 </tr>
+                 <tr class="row">
+                   <td><strong>French Other</strong></td>
+                   <td>&nbsp;</td>
+                   <td>&nbsp;</td>
+                   <td>&nbsp;</td>
+                 </tr>
+                 <tr class="row">
+                   <td><a href="https://alphacephei.com/vosk/models/vosk-model-small-fr-pguyot-0.3.zip" target="_blank">vosk-model-small-fr-pguyot-0.3</a></td>
+                   <td>39M</td>
+                   <td>37.04 (cv test) 28.72 (mtedx) 37.46 (podcast)</td>
+                   <td>Lightweight wideband model for Android and RPi trained by Paul Guyot</td>
+                 </tr>
+                 <tr class="row">
+                   <td><a href="https://alphacephei.com/vosk/models/vosk-model-fr-0.6-linto-2.2.0.zip" target="_blank">vosk-model-fr-0.6-linto-2.2.0</a></td>
+                   <td>1.5G</td>
+                   <td>16.19 (cv test) 16.44 (mtedx) 23.77 (podcast) 0.4xRT</td>
+                   <td>Model from LINTO project</td
+                 </tr>
+                 <tr class="row">
+                   <td><strong>German</strong></td>
+                   <td>&nbsp;</td>
+                   <td>&nbsp;</td>
+                   <td>&nbsp;</td>
+                 </tr>
+                 <tr class="row">
+                   <td><a href="https://alphacephei.com/vosk/models/vosk-model-de-0.21.zip" target="_blank">vosk-model-de-0.21</a></td>
+                   <td>1.9G</td>
+                   <td>9.30 (Tuda-de test), 24.10 (podcast) 11.99 (cv-test)</td>
+                   <td>Big narrowband German model for telephony and server</td>
+
+                 </tr>
+                 <tr class="row">
+                   <td><a href="https://alphacephei.com/vosk/models/vosk-model-small-de-zamia-0.3.zip" target="_blank">vosk-model-small-de-zamia-0.3</a></td>
+                   <td>49M</td>
+                   <td>14.81 (Tuda-de test, 37.46 (podcast)</td>
+                   <td>Zamia f_250 small model repackaged (not recommended)</td>
+
+                 </tr>
+                 <tr class="row">
+                   <td><a href="https://alphacephei.com/vosk/models/vosk-model-small-de-0.15.zip" target="_blank">vosk-model-small-de-0.15</a></td>
+                   <td>45M</td>
+                   <td>13.75 (Tuda-de test), 30.67 (podcast)</td>
+                   <td>Lightweight wideband model for Android and RPi</td>
+
+                 </tr>
+                 <tr class="row">
+                   <td><strong>Spanish</strong></td>
+                   <td>&nbsp;</td>
+                   <td>&nbsp;</td>
+                   <td>&nbsp;</td>
+                 </tr>
+                 <tr class="row">
+                   <td><a href="https://alphacephei.com/vosk/models/vosk-model-small-es-0.3.zip" target="_blank">vosk-model-small-es-0.3</a></td>
+                   <td>33M</td>
+                   <td>TBD</td>
+                   <td>Lightweight wideband model for Android and RPi</td>
+
+                 </tr>
+                 <tr class="row">
+                   <td><strong>Portuguese/Brazilian Portuguese</strong></td>
+                   <td>&nbsp;</td>
+                   <td>&nbsp;</td>
+                   <td>&nbsp;</td>
+                 </tr>
+                 <tr class="row">
+                   <td><a href="https://alphacephei.com/vosk/models/vosk-model-small-pt-0.3.zip" target="_blank">vosk-model-small-pt-0.3</a></td>
+                   <td>31M</td>
+                   <td>TBD</td>
+                   <td>Lightweight wideband model for Android and RPi</td>
+
+                 </tr>
+                 <tr class="row">
+                   <td><strong>Greek</strong></td>
+                   <td>&nbsp;</td>
+                   <td>&nbsp;</td>
+                   <td>&nbsp;</td>
+                 </tr>
+                 <tr class="row">
+                   <td><a href="https://alphacephei.com/vosk/models/vosk-model-el-gr-0.7.zip" target="_blank">vosk-model-el-gr-0.7</a></td>
+                   <td>1.1G</td>
+                   <td>TBD</td>
+                   <td>Big narrowband Greek model for server processing, not extremely accurate though</td>
+
+                 </tr>
+                 <tr class="row">
+                   <td><strong>Turkish</strong></td>
+                   <td>&nbsp;</td>
+                   <td>&nbsp;</td>
+                   <td>&nbsp;</td>
+                 </tr>
+                 <tr class="row">
+                   <td><a href="https://alphacephei.com/vosk/models/vosk-model-small-tr-0.3.zip" target="_blank">vosk-model-small-tr-0.3</a></td>
+                   <td>35M</td>
+                   <td>TBD</td>
+                   <td>Lightweight wideband model for Android and RPi</td>
+
+                 </tr>
+                 <tr class="row">
+                   <td><strong>Vietnamese</strong></td>
+                   <td>&nbsp;</td>
+                   <td>&nbsp;</td>
+                   <td>&nbsp;</td>
+                 </tr>
+                 <tr class="row">
+                   <td><a href="https://alphacephei.com/vosk/models/vosk-model-small-vn-0.3.zip" target="_blank">vosk-model-small-vn-0.3</a></td>
+                   <td>32M</td>
+                   <td>TBD</td>
+                   <td>Lightweight wideband model for Android and RPi</td>
+
+                 </tr>
+                 <tr class="row">
+                   <td><strong>Italian</strong></td>
+                   <td>&nbsp;</td>
+                   <td>&nbsp;</td>
+                   <td>&nbsp;</td>
+                 </tr>
+                 <tr class="row">
+                   <td><a href="https://alphacephei.com/vosk/models/vosk-model-small-it-0.4.zip" target="_blank">vosk-model-small-it-0.4</a></td>
+                   <td>32M</td>
+                   <td>TBD</td>
+                   <td>Lightweight wideband model for Android and RPi</td>
+
+                 </tr>
+                 <tr class="row">
+                   <td><strong>Dutch</strong></td>
+                   <td>&nbsp;</td>
+                   <td>&nbsp;</td>
+                   <td>&nbsp;</td>
+                 </tr>
+                 <tr class="row">
+                   <td><a href="https://alphacephei.com/vosk/models/vosk-model-nl-spraakherkenning-0.6.zip" target="_blank">vosk-model-nl-spraakherkenning-0.6</a></td>
+                   <td>860M</td>
+                   <td>TBD</td>
+                   <td>Medium Dutch model from Kaldi_NL</td>
+
+                 </tr>
+                 <tr class="row">
+                   <td><a href="https://alphacephei.com/vosk/models/vosk-model-nl-spraakherkenning-0.6-lgraph.zip" target="_blank">vosk-model-nl-spraakherkenning-0.6-lgraph</a></td>
+                   <td>100M</td>
+                   <td>TBD</td>
+                   <td>Smaller model with dynamic graph</td>
+
+                 </tr>
+                 <tr class="row">
+                   <td><strong>Catalan</strong></td>
+                   <td>&nbsp;</td>
+                   <td>&nbsp;</td>
+                   <td>&nbsp;</td>
+                 </tr>
+                 <tr class="row">
+                   <td><a href="https://alphacephei.com/vosk/models/vosk-model-small-ca-0.4.zip" target="_blank">vosk-model-small-ca-0.4</a></td>
+                   <td>42M</td>
+                   <td>TBD</td>
+                   <td>Lightweight wideband model for Android and RPi for Catalan</td>
+
+                 </tr>
+                 <tr class="row">
+                   <td><strong>Arabic</strong></td>
+                   <td>&nbsp;</td>
+                   <td>&nbsp;</td>
+                   <td>&nbsp;</td>
+                 </tr>
+                 <tr class="row">
+                   <td><a href="https://alphacephei.com/vosk/models/vosk-model-ar-mgb2-0.4.zip" target="_blank">vosk-model-ar-mgb2-0.4</a></td>
+                   <td>318M</td>
+                   <td>16.40 (MGB-2 dev set)</td>
+                   <td>Repackaged Arabic model trained on MGB2 dataset from Kaldi</td>
+
+                 </tr>
+                 <tr class="row">
+                   <td><strong>Farsi</strong></td>
+                   <td>&nbsp;</td>
+                   <td>&nbsp;</td>
+                   <td>&nbsp;</td>
+                 </tr>
+                 <tr class="row">
+                   <td><a href="https://alphacephei.com/vosk/models/vosk-model-small-fa-0.4.zip" target="_blank">vosk-model-small-fa-0.4</a></td>
+                   <td>47M</td>
+                   <td>TBD</td>
+                   <td>Lightweight wideband model for Android and RPi for Farsi (Persian)</td>
+
+                 </tr>
+                 <tr class="row">
+                   <td><a href="https://alphacephei.com/vosk/models/vosk-model-fa-0.5.zip" target="_blank">vosk-model-fa-0.5</a></td>
+                   <td>1G</td>
+                   <td>TBD</td>
+                   <td>Model with large vocabulary, not yet accurate but better than before (Persian)</td>
+
+                 </tr>
+                 <tr class="row">
+                   <td><a href="https://alphacephei.com/vosk/models/vosk-model-small-fa-0.5.zip" target="_blank">vosk-model-small-fa-0.5</a></td>
+                   <td>60M</td>
+                   <td>TBD</td>
+                   <td>Bigger small model for desktop application (Persian)</td>
+
+                 </tr>
+                 <tr class="row">
+                   <td><strong>Filipino</strong></td>
+                   <td>&nbsp;</td>
+                   <td>&nbsp;</td>
+                   <td>&nbsp;</td>
+                 </tr>
+                 <tr class="row">
+                   <td><a href="https://alphacephei.com/vosk/models/vosk-model-tl-ph-generic-0.6.zip" target="_blank">vosk-model-tl-ph-generic-0.6</a></td>
+                   <td>320M</td>
+                   <td>TBD</td>
+                   <td>Medium wideband model for Filipino (Tagalog) by feddybear</td>
+                 </tr>
+                 <tr class="row">
+                   <td><strong>Ukrainian</strong></td>
+                   <td>&nbsp;</td>
+                   <td>&nbsp;</td>
+                   <td>&nbsp;</td>
+                 </tr>
+                 <tr class="row">
+                   <td><a href="https://alphacephei.com/vosk/models/vosk-model-small-uk-v3-nano.zip" target="_blank">vosk-model-small-uk-v3-nano</a></td>
+                   <td>73M</td>
+                   <td>TBD</td>
+                   <td>Nano model from Speech Recognition for Ukrainian</td>
+
+                 </tr>
+                 <tr class="row">
+                   <td><a href="https://alphacephei.com/vosk/models/vosk-model-small-uk-v3-small.zip" target="_blank">vosk-model-small-uk-v3-small</a></td>
+                   <td>133M</td>
+                   <td>TBD</td>
+                   <td>Small model from Speech Recognition for Ukrainian</td>
+
+                 </tr>
+                 <tr class="row">
+                   <td><a href="https://alphacephei.com/vosk/models/vosk-model-uk-v3.zip" target="_blank">vosk-model-uk-v3</a></td>
+                   <td>343M</td>
+                   <td>TBD</td>
+                   <td>Bigger model from Speech Recognition for Ukrainian</td>
+
+                 </tr>
+                 <tr class="row">
+                   <td><strong>Kazakh</strong></td>
+                   <td>&nbsp;</td>
+                   <td>&nbsp;</td>
+                   <td>&nbsp;</td>
+                 </tr>
+                 <tr class="row">
+                   <td><a href="https://alphacephei.com/vosk/models/vosk-model-small-kz-0.15.zip" target="_blank">vosk-model-small-kz-0.15</a></td>
+                   <td>42M</td>
+                   <td>9.60(dev) 8.32(test)</td>
+                   <td>Small mobile model from SAIDA_Kazakh</td>
+
+                 </tr>
+                 <tr class="row">
+                   <td><a href="https://alphacephei.com/vosk/models/vosk-model-kz-0.15.zip" target="_blank">vosk-model-kz-0.15</a></td>
+                   <td>378M</td>
+                   <td>8.06(dev) 6.81(test)</td>
+                   <td>Bigger wideband model SAIDA_Kazakh</td>
+
+                 </tr>
+                 <tr class="row">
+                   <td><strong>Swedish</strong></td>
+                   <td>&nbsp;</td>
+                   <td>&nbsp;</td>
+                   <td>&nbsp;</td>
+                 </tr>
+                 <tr class="row">
+                   <td><a href="https://alphacephei.com/vosk/models/vosk-model-small-sv-rhasspy-0.15.zip" target="_blank">vosk-model-small-sv-rhasspy-0.15</a></td>
+                   <td>289M</td>
+                   <td>TBD</td>
+                   <td>Repackaged model from Rhasspy project</td>
+
+                 </tr>
+                 <tr class="row">
+                   <td><strong>Japanese</strong></td>
+                   <td>&nbsp;</td>
+                   <td>&nbsp;</td>
+                   <td>&nbsp;</td>
+                 </tr>
+                 <tr class="row">
+                   <td><a href="https://alphacephei.com/vosk/models/vosk-model-small-ja-0.22.zip" target="_blank">vosk-model-small-ja-0.22</a></td>
+                   <td>48M</td>
+                   <td>9.52(csj CER) 17.07(ted10k CER)</td>
+                   <td>Lightweight wideband model for Android and RPi for Japanese</td>
+
+                 </tr>
+                 <tr class="row">
+                   <td><strong>Esperanto</strong></td>
+                   <td>&nbsp;</td>
+                   <td>&nbsp;</td>
+                   <td>&nbsp;</td>
+                 </tr>
+                 <tr class="row">
+                   <td><a href="https://alphacephei.com/vosk/models/vosk-model-small-eo-0.22.zip" target="_blank">vosk-model-small-eo-0.22</a></td>
+                   <td>40M</td>
+                   <td>8.28 (CV Test)</td>
+                   <td>Lightweight wideband model for Android and RPi for Esperanto</td>
+
+                 </tr>
+                 <tr class="row">
+                   <td><strong>Speaker identification model</strong></td>
+                   <td>&nbsp;</td>
+                   <td>&nbsp;</td>
+                   <td>&nbsp;</td>
+                 </tr>
+                 <tr class="row">
+                   <td><a href="https://alphacephei.com/vosk/models/vosk-model-spk-0.4.zip" target="_blank">vosk-model-spk-0.4</a></td>
+                   <td>13M</td>
+                   <td>TBD</td>
+                   <td>Model for speaker identification, should work for all languages</td>
+
+                 </tr>
+              </tbody>
+            </table>
+        </section>
+
+
+        <script type="text/javascript">
+          const selector = document.getElementById("format-changer");
+          const chooseFile = document.getElementById("choose-file-changer");
+          const convertBtn = document.getElementById('choose-file');
+          const TextForConverting = document.getElementById('TextForConverting');
+          const getLastItem = thePath => thePath.substring(thePath.lastIndexOf('/') + 1)
+
+          var destFormat = ".mp3";
+
+          chooseFile.innerHTML = getLastItem(String(localStorage.getItem("FileDirectory")))
+
+
+          selector.addEventListener("change", (e) => {
+            destFormat = String(e.target.value)
+          })
+
+          const changeFormat = async () => {
+              try {
+                TextForConverting.innerHTML = "Loading..."
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4) {
+                        var response = xhttp.responseText;
+                        if (response.length >= 30){
+                          TextForConverting.innerHTML = _(response).truncate(25)
+                        }
+                        TextForConverting.innerHTML = response
+                    }
+                };
+                const text = localStorage.getItem("FileDirectory");
+                var newtext = "";
+                for (let index = 0; index < text.length; index++) {
+                    const element = text[index];
+                    if (element == "/"){
+                        newtext += "-"
+                    }
+                    else {
+                        newtext += element
+                    }
+                }
+                xhttp.open("GET", "http://127.0.0.1:5000/convert/" + newtext + "/" + destFormat, true);
+
+                xhttp.onerror = function(error) {
+                  console.log(error);
+                  TextForConverting.innerHTML = "Error while converting, Message:" + error
+                }
+
+                xhttp.send();
+              } catch (e) {
+                console.log("error", e);
+                TextForConverting.innerHTML = "Error while converting, Message:" + e
+              }
+          }
+
+          convertBtn.addEventListener("click", async (event) => {
+            console.log("clicked");
+            const res = await changeFormat()
+          })
+
+        </script>
+      </table>
     </body>
 </html>

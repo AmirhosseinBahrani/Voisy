@@ -6,9 +6,19 @@
       <!-- "../bower_components/bootstrap/dist/css/bootstrap.min.css" -->
       <meta name="viewport" content="width=device-width , initial-scale=1.0">
       <link rel = "stylesheet" href = "../css/sound.css" />
+
+      <script src="../js/buffer-loader.js"></script>
+      <script src="../js/pitch-shifter.js"></script>
+      <script src="../js/jquery-1.9.1.min.js"></script>
+      <script src="../js/jquery-ui.min.js"></script>
+
+
+      <link rel="stylesheet" href="../css/pitch-shifter.css" />
+      <link rel="stylesheet" href="../css/jquery-ui.min.css" />
+      <link rel="stylesheet" href="../css/jquery.ui.slider.min.css" />
    </head>
-   
-    
+
+
     <body>
         <header class="header">
             <div class="container"><h1 id="taskbar-title">Voisy</h1></div>
@@ -20,5 +30,40 @@
                 <li class="for-taskbar"><div class="upload-container"><object id="export-tab" class="icon" data="../svg/color/download.svg" width="20" height="20"></object><a href="./export.html" class="nav-links">Export</a></div></li>
             </nav>
         </header>
+
+
+    <div class="containera">
+        <div class="sliderContainer">
+            <div class="sliderLabel">Pitch ratio</div>
+            <div id="pitchRatioSlider"></div>
+            <div id="pitchRatioDisplay" class="sliderDisplay"></div>
+        </div>
+
+        <div class="sliderContainer">
+            <div class="sliderLabel">Overlap ratio</div>
+            <div id="overlapRatioSlider"></div>
+            <div id="overlapRatioDisplay" class="sliderDisplay"></div>
+        </div>
+
+        <div class="sliderContainer">
+            <div class="sliderLabel">Grain size</div>
+            <div id="grainSizeSlider"></div>
+            <div id="grainSizeDisplay" class="sliderDisplay"></div>
+        </div>
+
+        <div class="sliderContainer">
+            <div class="sliderLabel">Visualisation</div>
+            <div id="audioVisualisationSlider"></div>
+            <div id="audioVisualisationDisplay" class="sliderDisplay"></div>
+        </div>
+
+        <div class="sliderContainer">
+            <div class="sliderLabel">Audio source</div>
+            <div id="audioSourceSlider"></div>
+            <div id="audioSourceDisplay" class="sliderDisplay"></div>
+        </div>
+
+        <canvas width="512px" height="240px"></canvas>
+    </div>
     </body>
 </html>

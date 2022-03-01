@@ -6,26 +6,25 @@
       <!-- "../bower_components/bootstrap/dist/css/bootstrap.min.css" -->
       <meta name="viewport" content="width=device-width , initial-scale=1.0">
       <link rel = "stylesheet" href = "../css/index.css" />
-      
-   </head>   
-    
-    
+
+   </head>
+
+
     <body>
         <header class="header">
             <div class="container"><h1 id="taskbar-title">Voisy</h1></div>
-            <div id="line"></div> 
+            <div id="line"></div>
             <nav>
-                <li class="for-taskbar" id="selected"><div class="upload-container"><object class="icon" data="../svg/color/upload.svg" width="20" height="20"></object><a class="nav-links">Import</a></div></li>
+                <li class="for-taskbar" id="selected"><div class="upload-container"><object class="icon" data="../assets/svg/color/upload.svg" width="20" height="20"></object><a class="nav-links">Import</a></div></li>
 
-                <li class="for-taskbar"><div class="upload-container"><object class="icon" data="../svg/color/music-note-beamed.svg" width="20" height="20"></object><a href="./sound.html" class="nav-links">Sound</a></div></li>
-                <li class="for-taskbar"><div class="upload-container"><object id="subtitle-tab" class="icon" data="../svg/color/subtitles-svgrepo-com.svg" width="20" height="20"></object><a href="subtitle.html" class="nav-links">Subtitle</a></div></li>
-                <li class="for-taskbar"><div class="upload-container"><object id="export-tab" class="icon" data="../svg/color/download.svg" width="20" height="20"></object><a href="./audiosetting.html" class="nav-links">Audio</a></div></li>
-                <li class="for-taskbar"><div class="upload-container"><object id="export-tab" class="icon" data="../svg/color/download.svg" width="20" height="20"></object><a href="./export.html" class="nav-links">Export</a></div></li>
+                <li class="for-taskbar"><div class="upload-container"><object class="icon" data="../assets/svg/color/music-note-beamed.svg" width="20" height="20"></object><a href="./sound.html" class="nav-links">Sound</a></div></li>
+                <li class="for-taskbar"><div class="upload-container"><object id="subtitle-tab" class="icon" data="../assets/svg/color/subtitles-svgrepo-com.svg" width="20" height="20"></object><a href="subtitle.html" class="nav-links">Subtitle</a></div></li>
+                <li class="for-taskbar"><div class="upload-container"><object id="export-tab" class="icon" data="../assets/svg/color/download.svg" width="20" height="20"></object><a href="./export.html" class="nav-links">Export</a></div></li>
             </nav>
         </header>
-        
+
         <section class="section" id="import-file">
-            <input id="real-choose-file" type="file" hidden="hidden">
+            <input id="real-choose-file" type="file" hidden="false">
             <button id="choose-file" type="button">choose file</button>
             <span id="choosen-file-directory">Nothing yet</span>
             <button id="pause-play-button" class="play-btn pause">
@@ -33,81 +32,191 @@
                 <span id="right-side"></span>
             </button>
             <div id="sound-bar-container">
-                
                 <div id="progress"></div>
-                <input id="sound-bar" type="range" value="0">
-
+                <input id="sound-bar" type="range" value="0" min="0" max="1" value="0" step=".001">
             </div>
         </section>
-       
+        <section class="section" id="activity-table">
+            <h2 id="activity-label">Activity:</h2>
+
+            <table class="table" id="activityClass">
+
+              <thead>
+                <tr>
+                    <th>
+                        time
+                    </th>
+                    <th>
+                        directory
+                    </th>
+                    <th id="selected-boolean">
+                        delete
+                    </th>
+
+                </tr>
+              </thead>
+                <tbody>
+                  <tr class="row">
+                      <td>
+                          <span>...</span>
+                      </td>
+                      <td>
+                          <span>...</span>
+                      </td>
+                      <td>
+                          <img  id="check-icon" class="icon checkIcon" onClick="showAlert()" src="../svg/color/delete.svg" width="20" height="20">
+                      </td>
+                  </tr>
+                </tbody>
+
+
+            </table>
+        </section>
         <script type="text/javascript">
             const soundTabAnimation = document.getElementById("for-sound-tab");
-            const soundTab = document.getElementById("tab-sound");
-            const fakeUploadButton = document.getElementById("choose-file")
-            const realUploadButton = document.getElementById("real-choose-file")
-            const directoryText = document.getElementById("choosen-file-directory")
-            const songBar = document.getElementById("sound-bar")
-            const progress = document.getElementById("progress")
-            const leftSide = document.getElementById("left-side")
-            const rightSide = document.getElementById("right-side")
-            const pauseButton = document.getElementById("pause-play-button")
+            const fakeUploadButton = document.getElementById("choose-file");
+            const realUploadButton = document.getElementById("real-choose-file");
+            const directoryText = document.getElementById("choosen-file-directory");
+            const songBar = document.getElementById("sound-bar");
+            const progress = document.getElementById("progress");
+            const leftSide = document.getElementById("left-side");
+            const rightSide = document.getElementById("right-side");
+            const pauseButton = document.getElementById("pause-play-button");
+
+            const activityTable = document.getElementById("activityClass").getElementsByTagName('tbody')[0];
+            var music = null
             var paused = true
             rightSide.style.height = "0px"
             leftSide.style.clipPath = "polygon(0 0, 100% 50%, 100% 50%, 0% 100%)"
             leftSide.style.width = "12px"
-            pauseButton.addEventListener("click" , function(){
-                if(!paused){
-                    rightSide.style.height = "0px"
-                    leftSide.style.clipPath = "polygon(0 0, 100% 50%, 100% 50%, 0% 100%)"
-                    leftSide.style.width = "12px"
-                    paused = true
-                }else{
-                    rightSide.style.height = "15px"
-                    leftSide.style.clipPath = " polygon(0 0, 100% 0, 100% 100%, 0% 100%)"
-                    leftSide.style.width = "5px"
-                    paused = false
-                    
-                }
-            });
-            songBar.addEventListener("input" , function(){
-                if(songBar.value){
-                    progress.style.width = (songBar.value * 2) + "px"
-                };
-            });
-            fakeUploadButton.addEventListener("click" , function(){
-                realUploadButton.click()
-            });
-            realUploadButton.addEventListener("change" , function(event){
-                if (realUploadButton.value){
-                    var text = realUploadButton.files[0].name;
-                    var directory = event.target.files;
-                    
-                    if (typeof(Storage) !== "undefined") {
-                    // Code for localStorage/sessionStorage.
-                        localStorage.setItem("FileDirectory", directory[0].path)
-                    } else {
-                    // No Web Storage support..
-                        assert("No web Storage")
-                    }
 
-                    if (text.length > 25) { 
-                        text = text.substring(0, 24) + "...";
-                    };
-                    directoryText.innerHTML = text
-                }else{
-                    directoryText.innerHTML = "Nothing yet"
+
+            function addRow(time, directory){
+                //const newRow = '<tr class="row"><td><span>' + time + '</span></td><td><span>' + directory + '</span></td><td><img  id="check-icon" class="icon checkIcon" src="../svg/color/cheack-icon.svg" width="20" height="20"</td>></tr>'
+                var row = activityTable.insertRow(0);
+                row.className = "row"
+
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                var cell3 = row.insertCell(2);
+                const slicedDirectory = String(directory).substr(String(directory).length - 15);
+                cell1.innerHTML = '<span>' + time +'</span>';
+                cell2.innerHTML = '<span>' + slicedDirectory + '</span>';
+                cell3.innerHTML = '<img  id="check-icon" class="icon checkIcon" onClick="deleteSelf(this)" src="../svg/color/delete.svg" width="20" height="20">';
+
+            }
+
+            function deleteSelf(r){
+                var i = r.parentNode.parentNode.rowIndex;
+                document.getElementById("activityClass").deleteRow(i);
+                var data = JSON.parse(localStorage.getItem("UserData"));
+
+                data.splice(data.length - i, 1);
+                data.splice(data.length - i, 1);
+
+                localStorage.setItem("UserData",JSON.stringify(data));
+            };
+
+            function showAlert(){
+              alert("Please choose another file")
+            }
+
+            function initial(){
+              console.log(JSON.parse(localStorage.getItem("UserData")));
+              for (var i = 0; i < JSON.parse(localStorage.getItem("UserData")).length; i++) {
+                const element = JSON.parse(localStorage.getItem("UserData"))[i]
+
+                console.log(typeof(element));
+                if (i % 2 == 1 && element != null && element != undefined){
+                  console.log(element,"i");
+                  addRow(JSON.parse(localStorage.getItem("UserData"))[i - 1], element)
                 }
-            });
-            soundTab.addEventListener("mouseover" , function(){
-                soundTabAnimation.style.width = "16vw";
-                soundTabAnimation.style.marginLeft = "0vw"
-                soundTabAnimation.style.opacity = "100%"
-            });
-            soundTab.addEventListener("mouseleave" , function(){
-                soundTabAnimation.style.width = "10vw";
-                soundTabAnimation.style.marginLeft = "3vw"
-                soundTabAnimation.style.opacity = "0%"
-            });
+              }
+            }
+            initial()
+
+
+            pauseButton.addEventListener("click" , function(){
+               if(!paused){
+                   if (music != null) {
+                       rightSide.style.height = "0px"
+                       leftSide.style.clipPath = "polygon(0 0, 100% 50%, 100% 50%, 0% 100%)"
+                       leftSide.style.width = "12px"
+                       music.pause();
+                       paused = true
+                   }
+                   else {
+                       alert("Please choose your file")
+                   }
+               }
+               else{
+                   if (music != null) {
+                       rightSide.style.height = "15px"
+                       leftSide.style.clipPath = " polygon(0 0, 100% 0, 100% 100%, 0% 100%)"
+                       leftSide.style.width = "5px"
+                       music.play();
+                       music.loop = true;
+                       paused = false
+                   }
+                   else {
+                       alert("Please choose your file")
+                   }
+               }
+           });
+           songBar.addEventListener("input" , function(e){
+               if(songBar.value){
+                   progress.style.width = (songBar.value * 2) + "px"
+                   console.log(e.currentTarget.value, "d");
+                   const Duration = music.duration
+                   const CalculatedTime = Duration * e.currentTarget.value
+                   console.log(Duration, CalculatedTime);
+                   music.currentTime = CalculatedTime
+               };
+           });
+
+           fakeUploadButton.addEventListener("click" , function(){
+               realUploadButton.click()
+           });
+           realUploadButton.addEventListener("change" , function(event){
+               if (realUploadButton.value){
+                   var text = realUploadButton.files[0].name;
+                   var directory = event.target.files;
+
+                   if (typeof(Storage) !== "undefined") {
+                   // Code for localStorage/sessionStorage.
+                       var date = new Date().toLocaleTimeString()
+                       addRow(date, directory[0].path)
+
+                       localStorage.setItem("FileDirectory", directory[0].path)
+
+                       var UserData = localStorage.getItem("UserData");
+                       UserDataParsed = JSON.parse(UserData);
+                       console.log(UserDataParsed);
+                       if (UserDataParsed == null) {
+                         UserDataParsed = [date, directory[0].path]
+                       }
+                       else {
+                         UserDataParsed.push(date, directory[0].path)
+                       }
+                       localStorage.setItem("UserData",JSON.stringify(UserDataParsed));
+
+                   } else {
+                   // No Web Storage support..
+                       assert("No web Storage")
+                   }
+
+                   if (text.length > 25) {
+                       text = text.substring(0, 24) + "...";
+                   };
+                   console.log(directory[0].path);
+                   music = new Audio(directory[0].path)
+                   directoryText.innerHTML = text
+               }else{
+                   directoryText.innerHTML = "Nothing yet"
+               }
+           });
+
         </script>
+
     </body>
-</html> 
+</html>

@@ -6,10 +6,12 @@
       <!-- "../bower_components/bootstrap/dist/css/bootstrap.min.css" -->
       <meta name="viewport" content="width=device-width , initial-scale=1.0">
       <link rel = "stylesheet" href = "../css/subtitle.css" />
-      
+
+
+
    </head>
-   
-    
+
+
     <body>
         <header class="header">
             <div class="container"><h1 id="taskbar-title">Voisy</h1></div>
@@ -18,59 +20,254 @@
                 <li class="for-taskbar"><div class="upload-container"><object class="icon" data="../svg/color/upload.svg" width="20" height="20"></object><a href="index.html" class="nav-links">Import</a></div></li>
                 <li class="for-taskbar"><div class="upload-container"><object class="icon" data="../svg/color/music-note-beamed.svg" width="20" height="20"></object><a href="sound.html" class="nav-links">Sound</a></div></li>
                 <li class="for-taskbar" id="selected"><div class="upload-container"><object id="subtitle-tab" class="icon" data="../svg/color/subtitles-svgrepo-com.svg" width="20" height="20"></object><a class="nav-links">Subtitle</a></div></li>
-                <li class="for-taskbar"><div class="upload-container"><object id="export-tab" class="icon" data="../svg/color/download.svg" width="20" height="20"></object><a href="./audiosetting.html" class="nav-links">Audio</a></div></li>
                 <li class="for-taskbar"><div class="upload-container"><object id="export-tab" class="icon" data="../svg/color/download.svg" width="20" height="20"></object><a href="export.html" class="nav-links">Export</a></div></li>
             </nav>
         </header>
 
 
-        <section class="section" id="import-file">
-            <button id="choose-file" type="button">Transcribe</button>
-            <div id="FileDirectory">Srt file directory</div>
-            <script>
+        <section class="section" id="import-file-audio">
+            <button id="choose-file-audio" type="button">Transcribe Audio</button>
+            <div id="FileDirectoryAudio">Please select your Audio file here and choose your language for transcribing</div>
 
-                const sendRequest = async () => {
-                    console.log("ss");
-                    FileDirectoryH3.innerHTML = "Sending"
-                    var xhttp = new XMLHttpRequest();
-                    xhttp.onreadystatechange = function() {
-                        console.log(this.readyState, this.status, "200");
-                        if (this.readyState == 4 && this.status == 200) {
-                        // Typical action to be performed when the document is ready:
-                            var response = xhttp.responseText;
-                            FileDirectoryH3.innerHTML = response
-                        }
-                    };
-                    const text = localStorage.getItem("FileDirectory");
-                    var newtext = "";
+            <select id="languageSelectorAudio">
+              <option value="EN" selected="selected">English</option>
+              <option value="FA">Persian</option>
+              <option value="etc">other</option>
+            </select>
 
-                    for (let index = 0; index < text.length; index++) {
-                        const element = text[index];
-                        if (element == "/"){
-                            newtext += "-"
-                        }
-                        else {
-                            newtext += element
-                        }
-                        
-                        
-                    }
-                    console.log(newtext);
-                    xhttp.open("GET", "http://127.0.0.1:5000/vr/" + newtext , true);
+            <input type="text" value="Please type your installed directory address" id="DirAddressAudio" hidden></input>
 
-                    xhttp.send();
-                }
-                
-                const TranscribeButton = document.getElementById("choose-file");
-                const FileDirectoryH3 = document.getElementById("FileDirectory");
-
-                TranscribeButton.addEventListener("click", async (event) => {
-                    FileDirectoryH3.innerHTML = "Sending"
-                    const res = await sendRequest()
-                    console.log(res, "ress");
-                })
-
-            </script>
         </section>
+        <section class="section" id="import-file-video">
+            <button id="choose-file-video" type="button">Transcribe Video</button>
+            <div id="FileDirectoryVideo">Please select your Audio file here and choose your language for transcribing</div>
+
+            <select id="languageSelectorVideo">
+              <option value="EN" selected="selected">English</option>
+              <option value="FA">Persian</option>
+              <option value="etc">other</option>
+            </select>
+
+            <input type="text" value="Please type your installed directory address" id="DirAddressVideo" hidden></input>
+
+        </section>
+
+        <section class="section" id="editor">
+            <h1 class="shadow-sm">Subtitle Editor</h1>
+
+            <div class="flex-box">
+                <div class="row">
+                    <div class="col">
+                        <!-- Adding different buttons for
+                             different functionality-->
+                        <!--onclick attribute is added to give
+                            button a work to do when it is clicked-->
+                            <input type="file" name="inputfile"
+                                    id="inputfile">
+                            <button id="choose-file" type="button">choose file</button>
+                            <span id="choosen-file-directory">Nothing yet</span>
+                            <br>
+
+                        <button type="button"
+                                onclick="f1()"
+                                class=" shadow-sm btn btn-outline-secondary"
+                                data-toggle="tooltip"
+                                data-placement="top"
+                                title="Bold Text"
+                                id="EditButtons">
+                        Bold</button>
+                        <button type="button"
+                                onclick="f2()"
+                                class="shadow-sm btn btn-outline-success"
+                                data-toggle="tooltip"
+                                data-placement="top"
+                                title="Italic Text"
+                                id="EditButtons">
+                        Italic</button>
+                        <button type="button"
+                                onclick="f3()"
+                                class=" shadow-sm btn btn-outline-primary"
+                                data-toggle="tooltip"
+                                data-placement="top"
+                                title="Left Align"
+                                id="EditButtons">
+                        Upper Case</button>
+                        <button type="button"
+                                onclick="f7()"
+                                class="btn shadow-sm btn-outline-primary"
+                                data-toggle="tooltip"
+                                data-placement="top"
+                                title="Lowercase Text"
+                                id="EditButtons">
+                        Lower Case</button>
+                        <button type="button"
+                                onclick="f8()"
+                                class="btn shadow-sm btn-outline-primary"
+                                data-toggle="tooltip"
+                                data-placement="top"
+                                title="Capitalize Text"
+                                id="EditButtons">
+                        Capitalize</button>
+                        <button type="button"
+                                onclick="f9()"
+                                class="btn shadow-sm btn-outline-primary side"
+                                data-toggle="tooltip"
+                                data-placement="top"
+                                title="Tooltip on top"
+                                id="EditButtons">
+                        Clear Text</button>
+                        <button type="button"
+                                onclick="f10()"
+                                class="btn shadow-sm btn-outline-primary side"
+                                data-toggle="tooltip"
+                                data-placement="top"
+                                title="Save"
+                                id="EditButtons">
+                        Save your File</button>
+                        <button type="button"
+                                onclick="f11()"
+                                class="btn shadow-sm btn-outline-primary side"
+                                data-toggle="tooltip"
+                                data-placement="top"
+                                title="Translate"
+                                id="EditButtons">
+                        Translate</button>
+                        <select id="languageForTranslating">
+                          <option value=af>afrikaans</option>
+                          <option value=sq>albanian</option>
+                          <option value=am>amharic</option>
+                          <option value=ar>arabic</option>
+                          <option value=hy>armenian</option>
+                          <option value=az>azerbaijani</option>
+                          <option value=eu>basque</option>
+                          <option value=be>belarusian</option>
+                          <option value=bn>bengali</option>
+                          <option value=bs>bosnian</option>
+                          <option value=bg>bulgarian</option>
+                          <option value=ca>catalan</option>
+                          <option value=ceb>cebuano</option>
+                          <option value=ny>chichewa</option>
+                          <option value=zh-cn>chinese (simplified)</option>
+                          <option value=zh-tw>chinese (traditional)</option>
+                          <option value=co>corsican</option>
+                          <option value=hr>croatian</option>
+                          <option value=cs>czech</option>
+                          <option value=da>danish</option>
+                          <option value=nl>dutch</option>
+                          <option value=en>english</option>
+                          <option value=eo>esperanto</option>
+                          <option value=et>estonian</option>
+                          <option value=tl>filipino</option>
+                          <option value=fi>finnish</option>
+                          <option value=fr>french</option>
+                          <option value=fy>frisian</option>
+                          <option value=gl>galician</option>
+                          <option value=ka>georgian</option>
+                          <option value=de>german</option>
+                          <option value=el>greek</option>
+                          <option value=gu>gujarati</option>
+                          <option value=ht>haitian creole</option>
+                          <option value=ha>hausa</option>
+                          <option value=haw>hawaiian</option>
+                          <option value=iw>hebrew</option>
+                          <option value=hi>hindi</option>
+                          <option value=hmn>hmong</option>
+                          <option value=hu>hungarian</option>
+                          <option value=is>icelandic</option>
+                          <option value=ig>igbo</option>
+                          <option value=id>indonesian</option>
+                          <option value=ga>irish</option>
+                          <option value=it>italian</option>
+                          <option value=ja>japanese</option>
+                          <option value=jw>javanese</option>
+                          <option value=kn>kannada</option>
+                          <option value=kk>kazakh</option>
+                          <option value=km>khmer</option>
+                          <option value=ko>korean</option>
+                          <option value=ku>kurdish (kurmanji)</option>
+                          <option value=ky>kyrgyz</option>
+                          <option value=lo>lao</option>
+                          <option value=la>latin</option>
+                          <option value=lv>latvian</option>
+                          <option value=lt>lithuanian</option>
+                          <option value=lb>luxembourgish</option>
+                          <option value=mk>macedonian</option>
+                          <option value=mg>malagasy</option>
+                          <option value=ms>malay</option>
+                          <option value=ml>malayalam</option>
+                          <option value=mt>maltese</option>
+                          <option value=mi>maori</option>
+                          <option value=mr>marathi</option>
+                          <option value=mn>mongolian</option>
+                          <option value=my>myanmar (burmese)</option>
+                          <option value=ne>nepali</option>
+                          <option value=no>norwegian</option>
+                          <option value=ps>pashto</option>
+                          <option value=fa selected="selected">persian</option>
+                          <option value=pl>polish</option>
+                          <option value=pt>portuguese</option>
+                          <option value=pa>punjabi</option>
+                          <option value=ro>romanian</option>
+                          <option value=ru>russian</option>
+                          <option value=sm>samoan</option>
+                          <option value=gd>scots gaelic</option>
+                          <option value=sr>serbian</option>
+                          <option value=st>sesotho</option>
+                          <option value=sn>shona</option>
+                          <option value=sd>sindhi</option>
+                          <option value=si>sinhala</option>
+                          <option value=sk>slovak</option>
+                          <option value=sl>slovenian</option>
+                          <option value=so>somali</option>
+                          <option value=es>spanish</option>
+                          <option value=su>sundanese</option>
+                          <option value=sw>swahili</option>
+                          <option value=sv>swedish</option>
+                          <option value=tg>tajik</option>
+                          <option value=ta>tamil</option>
+                          <option value=te>telugu</option>
+                          <option value=th>thai</option>
+                          <option value=tr>turkish</option>
+                          <option value=uk>ukrainian</option>
+                          <option value=ur>urdu</option>
+                          <option value=uz>uzbek</option>
+                          <option value=vi>vietnamese</option>
+                          <option value=cy>welsh</option>
+                          <option value=xh>xhosa</option>
+                          <option value=yi>yiddish</option>
+                          <option value=yo>yoruba</option>
+                          <option value=zu>zulu</option>
+                          <option value=fil>Filipino</option>
+                          <option value=he>Hebrew</option>
+                        </select>
+                        <h5 id="textbox">Please select language for translating if you want to translate your Subtitle file</h5>
+
+                    </div>
+
+                </div>
+            </div>
+            <br>
+            <div class="row">
+
+                <div class="col-md-3 col-sm-3">
+                </div>
+                <div class="col-md-6 col-sm-9">
+                    <div class="flex-box">
+                        <textarea id="textarea1"
+                                  name="name"
+                                  rows="15"
+                                  cols="100"
+                                  placeholder="Subtitle will be here after you choose Subtitle file from above selector. Please don't change the format of subtitle data.">
+                                  Subtitle will be here after you choose Subtitle file from above selector. Please don't change the format of subtitle data.
+                        </textarea>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                </div>
+            </div>
+        </section>
+      <script src="../js/subtitle.js"></script>
+      <br>
+      <br>
     </body>
 </html>

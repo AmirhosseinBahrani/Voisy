@@ -4,7 +4,7 @@
 
 Mac/Linux:
 
-We have two ways to download ffmpeg in Mac:
+We have two ways to download ffmpeg :
 
 1. With homebrew:
 ```ruby
@@ -26,6 +26,28 @@ sudo cp ff* /usr/local/bin
 
 sudo xattr -dr com.apple.quarantine /usr/local/bin/ff*
 ```
+
+Windows:
+
+1. Download latest version of ffmpeg from https://www.gyan.dev/ffmpeg/builds/ffmpeg-git-full.7z
+
+2. Unzip this file by using any file archiver such as Winrar or 7z.
+
+3. Rename the extracted folder to ffmpeg and move it into the root of C: drive.
+
+4. run cmd as an administrator and set the environment path variable for ffmpeg by running the following command:
+
+```bash
+setx /m PATH "C:\ffmpeg\bin;%PATH%"
+```
+
+5. Restart your computer and check installation by running the following command:
+```bash
+ffmpeg -version
+```
+
+
+
 
 2. install node modules:
 ```bash

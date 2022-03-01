@@ -90,7 +90,7 @@ electron main.js
 you can create executable file from LocalApi, after creating electron will recognize it and it will be running automatically. you need to install pyinstaller for creating exe file:
 
 
-```
+```bash
 pip install pyinstaller
 
 cd ~/Voisy/src/Core

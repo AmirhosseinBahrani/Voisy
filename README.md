@@ -65,6 +65,9 @@ cd ~/Voisy/src
 electron main.js
 ```
 
+#Note
+
+1- There is one executable file called LocalApi in Core folder that electron will run this file for turning LocalApi on
 
 
 

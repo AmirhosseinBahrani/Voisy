@@ -69,6 +69,19 @@ electron main.js
 
 1- There is one executable file called LocalApi in Core folder that electron will run this file for turning LocalApi on
 
+# Futures
+
+you can Transcribe your audio files and video files easily with voisy, also you can Translate them to your favorite language and the transcribing procces is fully offline. you can download or create your own models for any language you want and use it on voicy, currently these languages will installed on voisy by defualt:
+
+English
+Persian
+Germany
+French
+Arabic
+Russian
+Chinese
+
+Default models are low weight, if you want better result you need to download models from Export tab in the app. we recommend for transcribing, use first model on the export tabs from each part.
 
 
 # License

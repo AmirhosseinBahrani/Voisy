@@ -2,23 +2,74 @@
   "name": "Voisy",
   "version": "1.0.0",
   "description": "Mac/Linux:",
-  "main": "index.js",
+  "main": "src/main.js",
   "scripts": {
-    "start": "electron main.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "electron src/main.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-macos": "electron-packager . --platform=darwin --out=dist --overwrite ",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder -m"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AmirhosseinBahrani/Voisy.git"
   },
   "keywords": [],
-  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/AmirhosseinBahrani/Voisy/issues"
   },
+  "build": {
+    "appId": "com.voisy.app",
+    "productName": "Voisy",
+    "directories": {
+      "output": "build"
+    },
+    "files": [
+      "./src/**/*",
+      "./build/**/*",
+      "./public/electron.js",
+      "node_modules",
+      "package.json"
+    ],
+    "dmg": {
+
+      "window": {
+            "width": "400",
+            "height": "300"
+        },
+        "contents": [
+            {
+                "x": 100,
+                "y": 100
+            },
+            {
+                "x": 300,
+                "y": 100,
+                "type": "link",
+                "path": "/Applications"
+            }
+        ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "win": {
+      "target": "NSIS"
+    }
+
+  },
   "homepage": "https://github.com/AmirhosseinBahrani/Voisy#readme",
+  "devDependencies": {
+    "electron": "15.3.1"
+  },
   "dependencies": {
-    "jquery": "^3.6.0"
+    "jquery": "^3.6.0",
+    "python-shell": "^3.0.1",
+    "request": "^2.88.2",
+    "request-promise": "^4.2.6"
   }
 }

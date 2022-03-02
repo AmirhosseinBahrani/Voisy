@@ -1,6 +1,6 @@
 # Voisy
 
-![Uploading Screen Shot 2022-03-02 at 11.06.38.png…]()
+![Screen Shot 2022-03-02 at 11 06 38](https://user-images.githubusercontent.com/69673077/156316127-2c24cf13-b923-4300-9879-b64b8334c32a.png)
 
 # How to install dependencies
 

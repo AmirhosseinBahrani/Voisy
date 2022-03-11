@@ -22,7 +22,7 @@
                 <li class="for-taskbar" id="selected"><div class="upload-container"><object id="subtitle-tab" class="icon" data="../svg/color/subtitles-svgrepo-com.svg" width="20" height="20"></object><a class="nav-links">Subtitle</a></div></li>
                 <li class="for-taskbar"><div class="upload-container"><object id="export-tab" class="icon" data="../svg/color/download.svg" width="20" height="20"></object><a href="export.html" class="nav-links">Export</a></div></li>
             </nav>
-        </header>
+        </header> 
 
 
         <section class="section" id="import-file-audio">
@@ -33,7 +33,7 @@
               <option value="EN" selected="selected">English</option>
               <option value="FA">Persian</option>
               <option value="etc">other</option>
-            </select>
+            </select> 
 
             <input type="text" value="Please type your installed directory address" id="DirAddressAudio" hidden></input>
 
@@ -66,199 +66,199 @@
                                     id="inputfile">
                             <button id="choose-file" type="button">choose file</button>
                             <span id="choosen-file-directory">Nothing yet</span>
+                            <select id="languageForTranslating">
+                                <option value=af>afrikaans</option>
+                                <option value=sq>albanian</option>
+                                <option value=am>amharic</option>
+                                <option value=ar>arabic</option>
+                                <option value=hy>armenian</option>
+                                <option value=az>azerbaijani</option>
+                                <option value=eu>basque</option>
+                                <option value=be>belarusian</option>
+                                <option value=bn>bengali</option>
+                                <option value=bs>bosnian</option>
+                                <option value=bg>bulgarian</option>
+                                <option value=ca>catalan</option>
+                                <option value=ceb>cebuano</option>
+                                <option value=ny>chichewa</option>
+                                <option value=zh-cn>chinese (simplified)</option>
+                                <option value=zh-tw>chinese (traditional)</option>
+                                <option value=co>corsican</option>
+                                <option value=hr>croatian</option>
+                                <option value=cs>czech</option>
+                                <option value=da>danish</option>
+                                <option value=nl>dutch</option>
+                                <option value=en>english</option>
+                                <option value=eo>esperanto</option>
+                                <option value=et>estonian</option>
+                                <option value=tl>filipino</option>
+                                <option value=fi>finnish</option>
+                                <option value=fr>french</option>
+                                <option value=fy>frisian</option>
+                                <option value=gl>galician</option>
+                                <option value=ka>georgian</option>
+                                <option value=de>german</option>
+                                <option value=el>greek</option>
+                                <option value=gu>gujarati</option>
+                                <option value=ht>haitian creole</option>
+                                <option value=ha>hausa</option>
+                                <option value=haw>hawaiian</option>
+                                <option value=iw>hebrew</option>
+                                <option value=hi>hindi</option>
+                                <option value=hmn>hmong</option>
+                                <option value=hu>hungarian</option>
+                                <option value=is>icelandic</option>
+                                <option value=ig>igbo</option>
+                                <option value=id>indonesian</option>
+                                <option value=ga>irish</option>
+                                <option value=it>italian</option>
+                                <option value=ja>japanese</option>
+                                <option value=jw>javanese</option>
+                                <option value=kn>kannada</option>
+                                <option value=kk>kazakh</option>
+                                <option value=km>khmer</option>
+                                <option value=ko>korean</option>
+                                <option value=ku>kurdish (kurmanji)</option>
+                                <option value=ky>kyrgyz</option>
+                                <option value=lo>lao</option>
+                                <option value=la>latin</option>
+                                <option value=lv>latvian</option>
+                                <option value=lt>lithuanian</option>
+                                <option value=lb>luxembourgish</option>
+                                <option value=mk>macedonian</option>
+                                <option value=mg>malagasy</option>
+                                <option value=ms>malay</option>
+                                <option value=ml>malayalam</option>
+                                <option value=mt>maltese</option>
+                                <option value=mi>maori</option>
+                                <option value=mr>marathi</option>
+                                <option value=mn>mongolian</option>
+                                <option value=my>myanmar (burmese)</option>
+                                <option value=ne>nepali</option>
+                                <option value=no>norwegian</option>
+                                <option value=ps>pashto</option>
+                                <option value=fa selected="selected">persian</option>
+                                <option value=pl>polish</option>
+                                <option value=pt>portuguese</option>
+                                <option value=pa>punjabi</option>
+                                <option value=ro>romanian</option>
+                                <option value=ru>russian</option>
+                                <option value=sm>samoan</option>
+                                <option value=gd>scots gaelic</option>
+                                <option value=sr>serbian</option>
+                                <option value=st>sesotho</option>
+                                <option value=sn>shona</option>
+                                <option value=sd>sindhi</option>
+                                <option value=si>sinhala</option>
+                                <option value=sk>slovak</option>
+                                <option value=sl>slovenian</option>
+                                <option value=so>somali</option>
+                                <option value=es>spanish</option>
+                                <option value=su>sundanese</option>
+                                <option value=sw>swahili</option>
+                                <option value=sv>swedish</option>
+                                <option value=tg>tajik</option>
+                                <option value=ta>tamil</option>
+                                <option value=te>telugu</option>
+                                <option value=th>thai</option>
+                                <option value=tr>turkish</option>
+                                <option value=uk>ukrainian</option>
+                                <option value=ur>urdu</option>
+                                <option value=uz>uzbek</option>
+                                <option value=vi>vietnamese</option>
+                                <option value=cy>welsh</option>
+                                <option value=xh>xhosa</option>
+                                <option value=yi>yiddish</option>
+                                <option value=yo>yoruba</option>
+                                <option value=zu>zulu</option>
+                                <option value=fil>Filipino</option>
+                                <option value=he>Hebrew</option>
+                              </select>
                             <br>
-
+                        <div class="buttons">
                         <button type="button"
                                 onclick="f1()"
-                                class=" shadow-sm btn btn-outline-secondary"
+                                class="bold-button shadow-sm btn btn-outline-secondary"
                                 data-toggle="tooltip"
                                 data-placement="top"
                                 title="Bold Text"
                                 id="EditButtons">
-                        Bold</button>
+                        </button>
                         <button type="button"
                                 onclick="f2()"
-                                class="shadow-sm btn btn-outline-success"
+                                class="italic-button shadow-sm btn btn-outline-success"
                                 data-toggle="tooltip"
                                 data-placement="top"
                                 title="Italic Text"
                                 id="EditButtons">
-                        Italic</button>
+                        </button>
                         <button type="button"
                                 onclick="f3()"
-                                class=" shadow-sm btn btn-outline-primary"
+                                class="uppercase shadow-sm btn btn-outline-primary"
                                 data-toggle="tooltip"
                                 data-placement="top"
                                 title="Left Align"
                                 id="EditButtons">
-                        Upper Case</button>
+                        </button>
                         <button type="button"
                                 onclick="f7()"
-                                class="btn shadow-sm btn-outline-primary"
+                                class="lowercase btn shadow-sm btn-outline-primary"
                                 data-toggle="tooltip"
                                 data-placement="top"
                                 title="Lowercase Text"
                                 id="EditButtons">
-                        Lower Case</button>
+                        </button>
                         <button type="button"
                                 onclick="f8()"
-                                class="btn shadow-sm btn-outline-primary"
+                                class="captilize btn shadow-sm btn-outline-primary"
                                 data-toggle="tooltip"
                                 data-placement="top"
                                 title="Capitalize Text"
                                 id="EditButtons">
-                        Capitalize</button>
+                        </button>
                         <button type="button"
                                 onclick="f9()"
-                                class="btn shadow-sm btn-outline-primary side"
+                                class="clear btn shadow-sm btn-outline-primary side"
                                 data-toggle="tooltip"
                                 data-placement="top"
                                 title="Tooltip on top"
                                 id="EditButtons">
-                        Clear Text</button>
+                        </button>
                         <button type="button"
                                 onclick="f10()"
-                                class="btn shadow-sm btn-outline-primary side"
+                                class="save btn shadow-sm btn-outline-primary side"
                                 data-toggle="tooltip"
                                 data-placement="top"
                                 title="Save"
                                 id="EditButtons">
-                        Save your File</button>
+                        </button>
                         <button type="button"
                                 onclick="f11()"
-                                class="btn shadow-sm btn-outline-primary side"
+                                class="translate btn shadow-sm btn-outline-primary side"
                                 data-toggle="tooltip"
                                 data-placement="top"
                                 title="Translate"
                                 id="EditButtons">
-                        Translate</button>
-                        <select id="languageForTranslating">
-                          <option value=af>afrikaans</option>
-                          <option value=sq>albanian</option>
-                          <option value=am>amharic</option>
-                          <option value=ar>arabic</option>
-                          <option value=hy>armenian</option>
-                          <option value=az>azerbaijani</option>
-                          <option value=eu>basque</option>
-                          <option value=be>belarusian</option>
-                          <option value=bn>bengali</option>
-                          <option value=bs>bosnian</option>
-                          <option value=bg>bulgarian</option>
-                          <option value=ca>catalan</option>
-                          <option value=ceb>cebuano</option>
-                          <option value=ny>chichewa</option>
-                          <option value=zh-cn>chinese (simplified)</option>
-                          <option value=zh-tw>chinese (traditional)</option>
-                          <option value=co>corsican</option>
-                          <option value=hr>croatian</option>
-                          <option value=cs>czech</option>
-                          <option value=da>danish</option>
-                          <option value=nl>dutch</option>
-                          <option value=en>english</option>
-                          <option value=eo>esperanto</option>
-                          <option value=et>estonian</option>
-                          <option value=tl>filipino</option>
-                          <option value=fi>finnish</option>
-                          <option value=fr>french</option>
-                          <option value=fy>frisian</option>
-                          <option value=gl>galician</option>
-                          <option value=ka>georgian</option>
-                          <option value=de>german</option>
-                          <option value=el>greek</option>
-                          <option value=gu>gujarati</option>
-                          <option value=ht>haitian creole</option>
-                          <option value=ha>hausa</option>
-                          <option value=haw>hawaiian</option>
-                          <option value=iw>hebrew</option>
-                          <option value=hi>hindi</option>
-                          <option value=hmn>hmong</option>
-                          <option value=hu>hungarian</option>
-                          <option value=is>icelandic</option>
-                          <option value=ig>igbo</option>
-                          <option value=id>indonesian</option>
-                          <option value=ga>irish</option>
-                          <option value=it>italian</option>
-                          <option value=ja>japanese</option>
-                          <option value=jw>javanese</option>
-                          <option value=kn>kannada</option>
-                          <option value=kk>kazakh</option>
-                          <option value=km>khmer</option>
-                          <option value=ko>korean</option>
-                          <option value=ku>kurdish (kurmanji)</option>
-                          <option value=ky>kyrgyz</option>
-                          <option value=lo>lao</option>
-                          <option value=la>latin</option>
-                          <option value=lv>latvian</option>
-                          <option value=lt>lithuanian</option>
-                          <option value=lb>luxembourgish</option>
-                          <option value=mk>macedonian</option>
-                          <option value=mg>malagasy</option>
-                          <option value=ms>malay</option>
-                          <option value=ml>malayalam</option>
-                          <option value=mt>maltese</option>
-                          <option value=mi>maori</option>
-                          <option value=mr>marathi</option>
-                          <option value=mn>mongolian</option>
-                          <option value=my>myanmar (burmese)</option>
-                          <option value=ne>nepali</option>
-                          <option value=no>norwegian</option>
-                          <option value=ps>pashto</option>
-                          <option value=fa selected="selected">persian</option>
-                          <option value=pl>polish</option>
-                          <option value=pt>portuguese</option>
-                          <option value=pa>punjabi</option>
-                          <option value=ro>romanian</option>
-                          <option value=ru>russian</option>
-                          <option value=sm>samoan</option>
-                          <option value=gd>scots gaelic</option>
-                          <option value=sr>serbian</option>
-                          <option value=st>sesotho</option>
-                          <option value=sn>shona</option>
-                          <option value=sd>sindhi</option>
-                          <option value=si>sinhala</option>
-                          <option value=sk>slovak</option>
-                          <option value=sl>slovenian</option>
-                          <option value=so>somali</option>
-                          <option value=es>spanish</option>
-                          <option value=su>sundanese</option>
-                          <option value=sw>swahili</option>
-                          <option value=sv>swedish</option>
-                          <option value=tg>tajik</option>
-                          <option value=ta>tamil</option>
-                          <option value=te>telugu</option>
-                          <option value=th>thai</option>
-                          <option value=tr>turkish</option>
-                          <option value=uk>ukrainian</option>
-                          <option value=ur>urdu</option>
-                          <option value=uz>uzbek</option>
-                          <option value=vi>vietnamese</option>
-                          <option value=cy>welsh</option>
-                          <option value=xh>xhosa</option>
-                          <option value=yi>yiddish</option>
-                          <option value=yo>yoruba</option>
-                          <option value=zu>zulu</option>
-                          <option value=fil>Filipino</option>
-                          <option value=he>Hebrew</option>
-                        </select>
-                        <h5 id="textbox">Please select language for translating if you want to translate your Subtitle file</h5>
-
+                        </button>
+                        
+                       
+                    </div>
                     </div>
 
                 </div>
             </div>
-            <br>
+            
             <div class="row">
 
                 <div class="col-md-3 col-sm-3">
                 </div>
                 <div class="col-md-6 col-sm-9">
-                    <div class="flex-box">
+                    <div class="flex-box" id="subtitle-editor">
                         <textarea id="textarea1"
                                   name="name"
                                   rows="15"
                                   cols="100"
                                   placeholder="Subtitle will be here after you choose Subtitle file from above selector. Please don't change the format of subtitle data.">
-                                  Subtitle will be here after you choose Subtitle file from above selector. Please don't change the format of subtitle data.
                         </textarea>
                     </div>
                 </div>

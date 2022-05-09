@@ -60,7 +60,7 @@ npm install
 
 3. install python modules:
 ```bash
-pip install vosk, flask, wave, srt, shutil, uuid, pydub, googletrans
+pip install vosk flask wave srt shutil uuid pydub googletrans
 ```
 
 # Run program:
